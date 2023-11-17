@@ -1,11 +1,115 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Home</title>
+  <title>Tienda de Moda Sostenible</title>
+  <!-- Enlace a Bootstrap CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 </head>
 <body>
-  <h1>BIENVENIDO</h1>
+  
+
+  <!-- Navegación -->
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container">
+      <!-- Logo y nombre de la tienda -->
+      <a class="navbar-brand" href="#">Nombre de la Tienda</a>
+      <!-- Botones de navegación -->
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item active">
+            <a class="nav-link" href="#">Inicio <span class="sr-only">(current)</span></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Tienda</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Acerca de</a>
+          </li>
+        </ul>
+      </div>
+      <!-- Carrito de compras y registro -->
+      <form class="form-inline">
+        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Carrito</button>
+      </form>
+    </div>
+  </nav>
+  {% load static %}
+  <img src="{% static 'sent.webp' %}" class="img-fluid" alt="...">
+  
+
+  <!-- Hero Section -->
+  <div class="container mt-4">
+    <div class="jumbotron">
+      <h1 class="display-4">100% Natural, 0% Plásticos</h1>
+      <p class="lead">Descubre nuestra gama de productos sostenibles.</p>
+      <hr class="my-4">
+      <p>It uses utility classes for typography and spacing to space content out within the larger container.</p>
+      <a class="btn btn-primary btn-lg" href="#" role="button">Explorar</a>
+    </div>
+  </div>
+
+  <!-- Sección de productos -->
+  <div class="container">
+    <div class="row">
+      <!-- Producto 1 -->
+      <div class="col-md-4">
+        <div class="card">
+          <img src="..." class="card-img-top" alt="...">
+          <div class="card-body">
+            <h5 class="card-title">Producto 1</h5>
+            <p class="card-text">Descripción corta del producto 1.</p>
+            <a href="#" class="btn btn-primary">Ver más</a>
+          </div>
+        </div>
+      </div>
+      <!-- Producto 2 -->
+      <div class="col-md-4">
+        ...
+      </div>
+      <!-- Producto 3 -->
+      <div class="col-md-4">
+        ...
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="bg-light text-center text-lg-start">
+    <div class="container p-4">
+      <div class="row">
+        <!-- Columna 1 -->
+        <div class="col-lg-6 col-md-12 mb-4 mb-md-0">
+          <h5 class="text-uppercase">Información de la tienda</h5>
+          <p>Alguna descripción acerca de la tienda y su filosofía de sostenibilidad.</p>
+        </div>
+        <!-- Columna 2 -->
+        <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
+          <h5 class="text-uppercase">Enlaces</h5>
+          <ul class="list-unstyled mb-0">
+            <li>
+              <a href="#!" class="text-dark">Inicio</a>
+            </li>
+            <li>
+              <a href="#!" class="text-dark">Tienda</a>
+            </li>
+            <li>
+              <a href="#!" class="text-dark">Acerca de</a>
+            </li>
+          </ul>
+        </div>
+        <!-- Columna 3 -->
+        <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
+          ...
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Enlace a Bootstrap JS y dependencias -->
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.1/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
 </html>

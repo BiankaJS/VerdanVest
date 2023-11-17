@@ -31,6 +31,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'home.apps.HomeConfig',
     'catalogo.apps.CatalogoConfig',
     'compras.apps.ComprasConfig',
     'dashboard_marca.apps.DashboardMarcaConfig',

@@ -31,6 +31,15 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'catalogo.apps.CatalogoConfig',
+    'compras.apps.ComprasConfig',
+    'dashboard_marca.apps.DashboardMarcaConfig',
+    'estandares_valoraciones.apps.EstandaresValoracionesConfig',
+    'ingredientes_materiales.apps.IngredientesMaterialesConfig',
+    'panel_administracion.apps.PanelAdministracionConfig',
+    'recomendaciones.apps.RecomendacionesConfig',
+    'soporte.apps.SoporteConfig',
+    'usuario.apps.UsuarioConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -75,9 +84,13 @@ WSGI_APPLICATION = 'verdanvest.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    }
+            'ENGINE': 'django.db.backends.mysql',
+            'NAME': 'Verdanvest',
+            'USER': 'root',
+            'PASSWORD': '----',
+            'HOST': 'localhost',
+            'PORT': '3306',
+        }
 }
 
 

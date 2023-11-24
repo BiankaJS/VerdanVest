@@ -130,11 +130,59 @@
             bottom: 10px;
             right: 10px;
         }
+
+        /* Nueva sección de estilos para el menú de hamburguesa */
+        .hamburger-menu {
+            display: none;
+            background-color: #f4f4f4;
+            padding: 10px;
+            position: fixed;
+            top: 60px;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+        }
+
+        .hamburger-link {
+            color: black;
+            text-decoration: none;
+            font-size: 18px;
+            margin: 5px;
+            display: block;
+        }
+
+        .hamburger-link:hover {
+            text-decoration: underline;
+        }
+
+        @media (max-width: 767px) {
+            .hamburger-menu {
+                display: block;
+            }
+
+            .navbar {
+                position: fixed;
+                top: 0;
+                width: 100%;
+            }
+
+            #statisticsSection {
+                top: 60px;
+            }
+
+            /* Nueva regla para el icono de las 3 líneas */
+            .navbar-toggler {
+                position: fixed;
+                top: 15px;
+                left: 15px;
+            }
+        }
     </style>
 </head>
 
 <body>
 
+    <!-- Navbar -->
     <nav class="navbar">
         <a class="navbar-brand" href="#">VERDANVEST</a>
         <div class="nav justify-content-center">
@@ -171,6 +219,7 @@
         <button class="btn btn-secondary back-btn" onclick="toggleStatistics()">Back</button>
     </div>
 
+    <!-- Footer -->
     <footer class="footer">
         <div class="container text-center">
             <span>JOIN OUR COMMUNITY</span>
@@ -203,17 +252,18 @@
         </div>
     </footer>
 
+    <!-- Hamburger menu content -->
+    <div class="hamburger-menu" id="hamburgerMenu">
+        <a href="#" class="hamburger-link" onclick="toggleStatistics()">Option 1</a>
+        <a href="#" class="hamburger-link" onclick="toggleStatistics()">Option 2</a>
+        <a href="#" class="hamburger-link" onclick="toggleStatistics()">Option 3</a>
+        <!-- Add more options as needed -->
+    </div>
+
     <script>
         function toggleMenu() {
-            var welcomeSection = document.getElementById('welcomeSection');
-            var statisticsSection = document.getElementById('statisticsSection');
-            if (statisticsSection.style.display === "none") {
-                welcomeSection.style.display = "none";
-                statisticsSection.style.display = "block";
-            } else {
-                welcomeSection.style.display = "block";
-                statisticsSection.style.display = "none";
-            }
+            var hamburgerMenu = document.getElementById('hamburgerMenu');
+            hamburgerMenu.style.display = (hamburgerMenu.style.display === "none") ? "block" : "none";
         }
 
         function toggleStatistics() {
@@ -222,6 +272,8 @@
             if (statisticsSection.style.display === "none") {
                 welcomeSection.style.display = "none";
                 statisticsSection.style.display = "block";
+                // Cerrar el menú al hacer clic en una opción
+                toggleMenu();
             } else {
                 welcomeSection.style.display = "block";
                 statisticsSection.style.display = "none";

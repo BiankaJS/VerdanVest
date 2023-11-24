@@ -23,5 +23,8 @@ urlpatterns = [
     path('ingredientes_materiales/', include('ingredientes_materiales.urls')),
     path('dashboard_marca/', include('dashboard_marca.urls')),
     path('', include('home.urls')),
-    path('catalog/', include('catalogo.urls'))
+    path('catalog/', include('catalogo.urls')),
+    path('shopping/', include('compras.urls')),
+    path('dashboard/', include('dashboard_marca.urls')),
+    path('support/', include('soporte.urls')),
 ]

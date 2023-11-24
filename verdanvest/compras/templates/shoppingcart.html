@@ -111,29 +111,80 @@
       text-align: center;
     }
 
-    .text-center-title {
-        text-align: center;
-        margin-top: 20px; /* Puedes ajustar el valor según tus necesidades */
-    }
-
-        .brands-container {
-            background-color: #829778;
+    
+    .checkout-container {
+            display: flex;
+            justify-content: space-between;
             padding: 20px;
-            text-align: center;
-            margin: 0,30,0,0;
         }
 
-        .brand-title {
-            color: white;
-            font-size: 24px;
-            margin-bottom: 20px;
+        .cart-section {
+            flex: 7;
         }
 
-        .rounded-image {
-            width: 100%;
+        .payment-section {
+            flex: 2;
+            border: 1px solid #000;
+            padding: 20px;
             border-radius: 10px;
-            margin-bottom: 10px;
+            height: 400px;
+            align-content: center;
+            
         }
+
+        .payment-section p {
+            text-align: center;
+            
+        }
+
+
+
+        .cart-title {
+            font-size: 24px;
+        }
+
+        .subtotal {
+            font-size: 18px;
+        }
+
+        .cart-summary {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px; /* Ajuste: Menos espacio arriba del resumen */
+}
+
+
+        .line {
+            border-top: 1px solid #000;
+            margin-top: 20px;
+            margin-bottom: 20px;
+            margin-right: 40px;
+        }
+
+        
+
+        .payment-methods {
+            text-align: center;
+        }
+
+        .payment-image {
+            max-width: 100px;
+            margin-top: 10px;
+        }
+
+        .free-shipping {
+            font-size: 16px;
+            margin-top: 20px;
+        }
+
+        .shipping-details {
+            font-size: 14px;
+        }
+        
+
+    
+
+        
   </style>
 </head>
 
@@ -154,69 +205,69 @@
       <img src="{% static 'bolsacompra.png' %}" alt="..." class="cart-icon"></img>
     </div>
   </nav>
+  <div class="checkout-container">
+    <!-- Sección del carrito -->
+    <div class="cart-section">
+        <h1 class="cart-title"><strong>Shopping Cart </strong> </h1>
+        <p class="subtotal">Subtotal: $100.00</p>
 
-  <h2 class="text-center-title">Bags</h2>
-    
+        <!-- Resumen del carrito -->
+        <div class="cart-summary">
+            <p>Shopping Cart (3)</p>
+        </div>
 
-  <div class="container mt-5">
-      <div class="row justify-content-center">
-          <!-- Primer Producto -->
-          <div class="col-md-4">
-              <div class="card mx-auto" style="width: 18rem;">
-                  <img src="{% static 'catalog1.webp' %}" class="card-img-top" alt="Producto 1">
-                  <div class="card-body">
-                      <h5 class="card-title">Versace</h5>
-                      <p class="card-text">USD $20,000</p>
-                  </div>
-              </div>
+        <div class="line"></div>
+         <!-- Productos en el carrito -->
+
+         
+    <!-- Productos en el carrito -->
+    <div class="cart-products">
+      <!-- Producto 1 -->
+      <div class="product">
+          <img src="{% static 'readyto.webp' %}" alt="Product 1">
+          <div class="product-details">
+              <h3>Product 1</h3>
+              <p>$50.00</p>
           </div>
-  
-          <!-- Segundo Producto -->
-          <div class="col-md-4">
-              <div class="card mx-auto" style="width: 18rem;">
-                  <img src="{% static 'catalog2.webp' %}" class="card-img-top" alt="Producto 2">
-                  <div class="card-body">
-                      <h5 class="card-title">Sentint</h5>
-                      <p class="card-text">USD $25,000</p>
-                  </div>
-              </div>
+          <div class="product-actions">
+              <span class="move-to-wishlist">Move to wish list</span>
+              <span class="delete">Delete</span>
           </div>
-  
-          <!-- Tercer Producto -->
-          <div class="col-md-4">
-              <div class="card mx-auto" style="width: 18rem;">
-                  <img src="{% static 'catalog3.webp' %}" class="card-img-top" alt="Producto 3">
-                  <div class="card-body">
-                      <h5 class="card-title">Chanel</h5>
-                      <p class="card-text">USD $30,000</p>
-                  </div>
-              </div>
-          </div>
-          
-  
       </div>
+      <div class="line"></div>
+
+      <!-- Producto 2 -->
+      <div class="product">
+          <img src="{% static 'readyto.webp' %}" alt="Product 2">
+          <div class="product-details">
+              <h3>Product 2</h3>
+              <p>$30.00</p>
+          </div>
+          <div class="product-actions">
+              <span class="move-to-wishlist">Move to wish list</span>
+              <span class="delete">Delete</span>
+          </div>
+      </div>
+      <div class="line"></div>
+
+      <!-- Agrega más productos según sea necesario -->
   </div>
 
+         
+    </div>
 
-  <div class="brands-container mt-4 mb-4">
-    <h2 class="brand-title text-center mb-4">OUR BRANDS</h2>
+    <!-- Sección de métodos de pago -->
+    <div class="payment-section">
+        <h2 class="payment-methods">Methods of Payment</h2>
+        <img src="{% static 'logo.jpg' %}"  alt="Payment Methods" class="payment-image" >
 
-    <div class="row justify-content-center">
-      <div class="col-md-3 mb-4 text-center">
-          <img src="{% static 'brand.jpg' %}" class="rounded-image img-fluid" style="max-height: 400px;" alt="Brand 1">
-          <h4 class="brand-subtitle">DEZI</h4>
-      </div>
-      <div class="col-md-3 mb-4 text-center">
-          <img src="{% static 'brand 2.jpg' %}" class="rounded-image img-fluid" style="max-height: 400px;" alt="Brand 2">
-          <h4 class="brand-subtitle">DAIN</h4>
-      </div>
-      <div class="col-md-3 mb-4 text-center">
-          <img src="{% static 'brand 3.jpg' %}" class="rounded-image img-fluid" style="max-height: 400px;" alt="Brand 3">
-          <h4 class="brand-subtitle">ZERO</h4>
-      </div>
-  </div>
+        <p class="free-shipping">FREE SHIPPING</p>
+        <p class="shipping-details">Delivery within 4 to 6 business days</p>
+
+        <p class="free-shipping">FREE RETURNS</p>
+        <p class="shipping-details">20-day return guarantee</p>
+    </div>
 </div>
-
 
   <footer class="footer">
     <div class="container text-center">

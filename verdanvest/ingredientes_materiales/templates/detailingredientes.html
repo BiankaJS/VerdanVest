@@ -110,29 +110,75 @@
       width: 100%;
       text-align: center;
     }
-
-    .text-center-title {
-        text-align: center;
-        margin-top: 20px; /* Puedes ajustar el valor según tus necesidades */
-    }
-
-        .brands-container {
-            background-color: #829778;
-            padding: 20px;
-            text-align: center;
-            margin: 0,30,0,0;
+    
+    .container-ingredient {
+            display: flex;
+            justify-content: space-between;
+            margin: 20px;
         }
 
-        .brand-title {
+        .ingredient-info {
+            flex: 3;
+            border: 2px solid #829778;
+            border-radius: 10px;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .ingredient-image-l {
+            max-width: 80%; /* Hace que la imagen ocupe el ancho máximo de su contenedor */
+            height: auto; /* Mantiene la proporción de la imagen */
+            margin-bottom: 15px;
+        }
+
+        .find-products-button {
+            background-color: #829778;
             color: white;
-            font-size: 24px;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .priorities {
+            margin-top: 20px;
+            text-align: justify;
+        }
+
+        .common-concerns {
+            flex: 7;
+            text-align: center;
+        }
+
+        .concern-title {
+            font-weight: bold;
+            font-size: 25px;
+            margin-bottom: 10px;
+            text-align: start;
+        }
+
+        .concern-list {
+            display: flex;
+            justify-content: space-between;
             margin-bottom: 20px;
         }
 
-        .rounded-image {
-            width: 100%;
-            border-radius: 10px;
-            margin-bottom: 10px;
+        .concern-item {
+            flex: 1;
+            text-align: center;
+            text-align: start;
+        }
+
+        .line {
+            border-top: 1px solid #000;
+            margin-bottom: 20px;
+            margin-right: 20px;
+        }
+
+        .ingredient-images {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
         }
   </style>
 </head>
@@ -155,64 +201,43 @@
     </div>
   </nav>
 
-  <h2 class="text-center-title">Bags</h2>
-    
+  <div class="container-ingredient">
+  
 
-  <div class="container mt-5">
-      <div class="row justify-content-center">
-          <!-- Primer Producto -->
-          <div class="col-md-4">
-              <div class="card mx-auto" style="width: 18rem;">
-                  <img src="{% static 'catalog1.webp' %}" class="card-img-top" alt="Producto 1">
-                  <div class="card-body">
-                      <h5 class="card-title">Versace</h5>
-                      <p class="card-text">USD $20,000</p>
-                  </div>
-              </div>
-          </div>
-  
-          <!-- Segundo Producto -->
-          <div class="col-md-4">
-              <div class="card mx-auto" style="width: 18rem;">
-                  <img src="{% static 'catalog2.webp' %}" class="card-img-top" alt="Producto 2">
-                  <div class="card-body">
-                      <h5 class="card-title">Sentint</h5>
-                      <p class="card-text">USD $25,000</p>
-                  </div>
-              </div>
-          </div>
-  
-          <!-- Tercer Producto -->
-          <div class="col-md-4">
-              <div class="card mx-auto" style="width: 18rem;">
-                  <img src="{% static 'catalog3.webp' %}" class="card-img-top" alt="Producto 3">
-                  <div class="card-body">
-                      <h5 class="card-title">Chanel</h5>
-                      <p class="card-text">USD $30,000</p>
-                  </div>
-              </div>
-          </div>
-          
-  
+    <div class="common-concerns">
+      <div class="ingredient-images">
+          <img src="{% static 'biotin.png' %}" alt="Biotin" class="ingredient-image-l">
+          <img src="{% static 'low.png' %}" alt="Low" class="ingredient-image-l">
       </div>
+      <div class="concern-title">Common Concerns</div>
+      <div class="concern-list">
+          <div class="concern-item">Low</div>
+          <div class="concern-item">Cancer</div>
+      </div>
+      <div class="line"></div>
+      <div class="concern-list">
+        <div class="concern-item">Low</div>
+        <div class="concern-item">Allergies & Immunotoxicity</div>
+    </div>
+    <div class="line"></div>
+    <div class="concern-list">
+      <div class="concern-item">Low</div>
+      <div class="concern-item">Developmental and Reproductive Toxicity</div>
+  </div>
+  <div class="line"></div>
+  <div class="concern-list">
+    <div class="concern-item">Low</div>
+    <div class="concern-item">Use Restrictions</div>
+</div>
+      <!-- Add more concerns as needed -->
   </div>
 
-
-  <div class="brands-container mt-4 mb-4">
-    <h2 class="brand-title text-center mb-4">OUR BRANDS</h2>
-
-    <div class="row justify-content-center">
-      <div class="col-md-3 mb-4 text-center">
-          <img src="{% static 'brand.jpg' %}" class="rounded-image img-fluid" style="max-height: 400px;" alt="Brand 1">
-          <h4 class="brand-subtitle">DEZI</h4>
-      </div>
-      <div class="col-md-3 mb-4 text-center">
-          <img src="{% static 'brand 2.jpg' %}" class="rounded-image img-fluid" style="max-height: 400px;" alt="Brand 2">
-          <h4 class="brand-subtitle">DAIN</h4>
-      </div>
-      <div class="col-md-3 mb-4 text-center">
-          <img src="{% static 'brand 3.jpg' %}" class="rounded-image img-fluid" style="max-height: 400px;" alt="Brand 3">
-          <h4 class="brand-subtitle">ZERO</h4>
+    <div class="ingredient-info">
+      <img src="{% static 'quimico.png' %}" alt="Ingredient" class="ingredient-image">
+      <button class="find-products-button">Find products with this ingredient</button>
+      <div class="priorities">
+          <h3><strong> Priorities</strong></h3>
+          <p>Biotin, also known as vitamin B7, is a water-soluble vitamin that plays a crucial role in maintaining healthy hair, skin, and nails. It is often referred to as the 'beauty vitamin' due to its ability to enhance the overall appearance of these features.</p>
       </div>
   </div>
 </div>

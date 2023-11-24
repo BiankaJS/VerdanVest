@@ -1,3 +1,8 @@
 from django.shortcuts import render
+from django.http import HttpResponse
 
-# Create your views here.
+def shipment_view(request):
+    return render(request, 'compras/shipment.html')
+
+def shoppingcart_view(request):
+    return render(request, 'compras/shoppingcart.html')

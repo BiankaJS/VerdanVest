@@ -111,29 +111,112 @@
       text-align: center;
     }
 
-    .text-center-title {
-        text-align: center;
-        margin-top: 20px; /* Puedes ajustar el valor según tus necesidades */
+    .container-i {
+    margin-left: 20px; /* Margen a la izquierda */
+    margin-bottom: 20px; /* Espacio entre elementos */
+}
+
+.container-i h1,
+.container-i b,
+.container-i p {
+    margin-bottom: 10px; /* Espacio entre elementos internos */
+}
+
+    .container-mar {
+            display: flex;
+            justify-content: space-between;
+            margin: 20px;
+        }
+
+        .form-column {
+        width: 50%;
+        margin: auto;
     }
 
-        .brands-container {
-            background-color: #829778;
-            padding: 20px;
-            text-align: center;
-            margin: 0,30,0,0;
+    .contact-form {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .form-group {
+        margin-bottom: 20px;
+    }
+
+    label {
+        display: block;
+        margin-bottom: 5px;
+        font-weight: bold;
+    }
+
+    input, textarea {
+        width: 100%;
+        padding: 10px;
+        margin-top: 5px;
+        box-sizing: border-box;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+    }
+
+    button {
+        padding: 10px;
+        background-color: #4CAF50;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+
+    button:hover {
+        background-color: #45a049;
+    }
+
+    .store-info-column {
+    flex: 0 0 100px; /* flex-grow: 0, flex-shrink: 0, flex-basis: 100px */
+    padding: 20px;
+    border-radius: 10px;
+    height: auto;
+}
+
+
+        .store-info-column p {
+            margin: 0;
+            color: black;
+            
+          
         }
 
-        .brand-title {
-            color: white;
-            font-size: 24px;
-            margin-bottom: 20px;
+        .contact-form {
+            display: flex;
+            flex-direction: column;
         }
 
-        .rounded-image {
-            width: 100%;
-            border-radius: 10px;
+        .form-group {
             margin-bottom: 10px;
         }
+
+        .form-group label {
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        .form-group input {
+            padding: 8px;
+        }
+
+        .form-group textarea {
+            padding: 8px;
+            resize: vertical;
+        }
+
+        .form-group button {
+            padding: 10px;
+            background-color: #829778;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
   </style>
 </head>
 
@@ -155,66 +238,52 @@
     </div>
   </nav>
 
-  <h2 class="text-center-title">Bags</h2>
-    
+  <div class="container-i">
+    <!-- Título principal -->
+    <h1>Contact Us</h1>
 
-  <div class="container mt-5">
-      <div class="row justify-content-center">
-          <!-- Primer Producto -->
-          <div class="col-md-4">
-              <div class="card mx-auto" style="width: 18rem;">
-                  <img src="{% static 'catalog1.webp' %}" class="card-img-top" alt="Producto 1">
-                  <div class="card-body">
-                      <h5 class="card-title">Versace</h5>
-                      <p class="card-text">USD $20,000</p>
-                  </div>
-              </div>
+    <!-- Texto sobre la colaboración -->
+    <b>We believe in the power of collaboration to make a positive impact on our planet.</b>
+
+    <!-- Texto sobre el formulario de contacto -->
+    <p style="color: black;">Drop us a line using the form below if you have suggestions or if you need an exchange or return. We're excited to unite with like-minded individuals like you who are passionate about the well-being of our planet and all living creatures.</p>
+</div>
+
+<div class="container-mar">
+  <!-- Columna del formulario de contacto -->
+  <div class="form-column">
+      <div class="contact-form">
+          <div class="form-group">
+              <label for="name">Name:</label>
+              <input type="text" id="name" name="name">
           </div>
-  
-          <!-- Segundo Producto -->
-          <div class="col-md-4">
-              <div class="card mx-auto" style="width: 18rem;">
-                  <img src="{% static 'catalog2.webp' %}" class="card-img-top" alt="Producto 2">
-                  <div class="card-body">
-                      <h5 class="card-title">Sentint</h5>
-                      <p class="card-text">USD $25,000</p>
-                  </div>
-              </div>
+          <div class="form-group">
+              <label for="email">Email:</label>
+              <input type="email" id="email" name="email">
           </div>
-  
-          <!-- Tercer Producto -->
-          <div class="col-md-4">
-              <div class="card mx-auto" style="width: 18rem;">
-                  <img src="{% static 'catalog3.webp' %}" class="card-img-top" alt="Producto 3">
-                  <div class="card-body">
-                      <h5 class="card-title">Chanel</h5>
-                      <p class="card-text">USD $30,000</p>
-                  </div>
-              </div>
+          <div class="form-group">
+              <label for="phone">Phone Number:</label>
+              <input type="tel" id="phone" name="phone">
           </div>
-          
-  
+          <div class="form-group">
+              <label for="message">Message:</label>
+              <textarea id="message" name="message"></textarea>
+          </div>
+          <div class="form-group">
+              <button type="submit">Send</button>
+          </div>
       </div>
   </div>
 
+ <!-- Columna de información de la tienda -->
+ <div class="store-info-column" style="border: 1px solid #000; border-radius: 10px; padding: 20px;">
+  <h1><strong>01</strong></h1>
+  <h3><strong>STORE MEXICO CITY</strong></h3>
+  <p>Avenida Universidad 602, Lomas del Campestre, 37150 León, Gto.</p>
+  <p><strong>Phone:</strong> +52 123 456 7890</p>
+  <p><strong>Email:</strong> info@storemexicocity.com</p>
+</div>
 
-  <div class="brands-container mt-4 mb-4">
-    <h2 class="brand-title text-center mb-4">OUR BRANDS</h2>
-
-    <div class="row justify-content-center">
-      <div class="col-md-3 mb-4 text-center">
-          <img src="{% static 'brand.jpg' %}" class="rounded-image img-fluid" style="max-height: 400px;" alt="Brand 1">
-          <h4 class="brand-subtitle">DEZI</h4>
-      </div>
-      <div class="col-md-3 mb-4 text-center">
-          <img src="{% static 'brand 2.jpg' %}" class="rounded-image img-fluid" style="max-height: 400px;" alt="Brand 2">
-          <h4 class="brand-subtitle">DAIN</h4>
-      </div>
-      <div class="col-md-3 mb-4 text-center">
-          <img src="{% static 'brand 3.jpg' %}" class="rounded-image img-fluid" style="max-height: 400px;" alt="Brand 3">
-          <h4 class="brand-subtitle">ZERO</h4>
-      </div>
-  </div>
 </div>
 
 

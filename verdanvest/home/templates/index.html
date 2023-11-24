@@ -7,34 +7,157 @@
   <!-- Enlace a Bootstrap CSS -->
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
   <style>
-        body {
+         body {
             background-color: #f4f4f4;
-            font-family: 'Arial', sans-serif;
+            margin: 0;
+            font-family: Arial, sans-serif;
         }
+
         .navbar {
-            background-color: #ffffff;
+            background-color: #f4f4f4;
+            padding-top: 1rem;
+            padding-bottom: 0.5rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            border-bottom: 1px solid #ccc;
+            position: relative;
+        }
+
+        .nav {
+            width: 100%;
+            justify-content: center;
+            padding-left: 0;
+        }
+
+        .nav-item {
+            display: inline-block;
+            margin: 0 10px;
+        }
+
+        .nav-link {
+            color: black;
+            font-size: 16px;
+            text-decoration: none;
+        }
+
+        .nav-link:hover {
+            text-decoration: underline;
+        }
+
+        .overlay-word {
+            position: absolute;
+            top: 0;
+            right: 0;
+            color: white;
+            padding: 5px;
+            margin: 5px;
+        }
+
+        .search-cart-login {
+            display: flex;
+            align-items: center;
+            height: 40px;
+            /* Ajustar altura por si no les gusta */
+        }
+
+        .login-link,
+        .search-bar,
+        .cart-icon {
+            margin-left: 10px;
+            height: 100%;
+            /* Ajustar altura por si no les gusta */
+        }
+
+        .login-link {
+            font-size: 14px;
+            /* Ajustar altura por si no les gusta */
+        }
+
+        .search-bar {
+            border: none;
+            padding: 5px;
+            border-radius: 3px;
+        }
+
+        .cart-icon,
+        .login-link {
+            color: black;
+            cursor: pointer;
+        }
+
+        .cart-icon img {
+            height: 100%;
+            /* Ajustar altura por si no les gusta */
+        }
+
+        .footer {
+            background-color: #333333;
+            color: white;
+            padding: 20px 0;
+            width: 100%;
+            text-align: center;
+            position: relative;
+            clear: both;
+            margin-top: 2rem;
+        }
+
+        .material-content {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            padding: 2rem;
+            max-width: 1200px;
+            margin: auto;
+        }
+
+        .material-image {
+            flex-basis: 45%;
+            overflow: hidden;
+            height: auto;
+            /* Se ajusta dinámicamente a la imagen */
+        }
+
+        .material-image img {
+            width: 100%;
+            height: auto;
+            object-fit: cover;
+            border-radius: 15% 30% 40% 13% / 20% 30% 25% 50%;
+            margin-top: 50px;
+        }
+
+        .text-section {
+            flex-basis: 50%;
+            text-align: left;
+            margin-top: 5rem;
+        }
+
+        .sustainability-section {
+            background-color: #f4f4f4;
+            padding: 2rem;
+            margin-top: 1rem;
+            max-width: 100%;
+            /* Para que ocupe el espacio disponible */
+        }
+
+        .title-section {
+            text-align: start;
+            margin-top: 2rem;
+            margin-left: 20px;
+        }
+
+        .title-section h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .form-control {
+            margin-bottom: 20px;
         }
         .footer {
             background-color: #333333;
             color: white;
             padding: 20px 0;
-        }
-        .login-container {
-            max-width: 400px;
-            margin: 50px auto;
-            background: #fff;
-            padding: 20px;
-            box-shadow: 0px 0px 10px rgba(0,0,0,0.1);
-        }
-        .btn-submit {
-            background-color: #4CAF50;
-            border: none;
-        }
-        .btn-submit:hover {
-            background-color: #45a049;
-        }
-        .form-control {
-            margin-bottom: 20px;
         }
          /* Estilos adicionales para las imágenes */
          .rounded-image {
@@ -56,36 +179,39 @@
         .container-fluid {
             padding: 30px; /* Agrega relleno al contenedor fluido para crear un margen */
         }
+
+
+        .rounded-image-logo {
+            border-radius: 50%;
+            display: block;
+            margin: 0 auto; /* Centrar la imagen horizontalmente */
+            width: 300px; /* Ajusta el ancho según tus necesidades */
+            height: 300px; /* Ajusta el alto según tus necesidades */
+            object-fit: cover; /* Ajusta la forma en que la imagen se ajusta dentro del contenedor */
+        }
+
+      
 </style>
 </head>
 <body>
   
 
-  <!-- Navegación -->
-  <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <div class="container">
-      <!-- Logo y nombre de la tienda -->
-      <a class="navbar-brand" href="#">Nombre de la Tienda</a>
-      <!-- Botones de navegación -->
-      <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav ml-auto">
-          <li class="nav-item active">
-            <a class="nav-link" href="#">Inicio <span class="sr-only">(current)</span></a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Tienda</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Acerca de</a>
-          </li>
-        </ul>
-      </div>
-      <!-- Carrito de compras y registro -->
-      <form class="form-inline">
-        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Carrito</button>
-      </form>
+  <nav class="navbar">
+    <a class="navbar-brand" href="#">VERDANVEST</a>
+    <div class="nav justify-content-center">
+        <a class="nav-link active" href="#">HOME</a>
+        <a class="nav-link" href="#">SHOP</a>
+        <a class="nav-link" href="#">ABOUT</a>
+        <a class="nav-link" href="#">CAR SHOP</a>
+        <a class="nav-link" href="#" class="login-link">LOG IN/SIGN UP</a>
     </div>
-  </nav>
+    <div class="overlay-word search-cart-login">
+        <!-- <a href="#" class="login-link">LOG IN/SIGN UP</a> -->
+        <input class="search-bar" type="text" placeholder="Search">
+        {% load static %}
+        <img src="{% static 'bolsacompra.png' %}" alt="..." class="cart-icon"></img>
+    </div>
+</nav>
   {% load static %}
   <img src="{% static 'Prueba.png' %}" class="img-fluid" alt="...">
   
@@ -108,43 +234,53 @@
     </div>
   </div>
 
-  
-
-  <!-- Hero Section -->
-  <div class="container mt-4">
-    <div class="jumbotron">
-      <h1 class="display-4">100% Natural, 0% Plásticos</h1>
-      <p class="lead">Descubre nuestra gama de productos sostenibles.</p>
-      <hr class="my-4">
-      <p>It uses utility classes for typography and spacing to space content out within the larger container.</p>
-      <a class="btn btn-primary btn-lg" href="#" role="button">Explorar</a>
+  <div class="row mt-5" style="background-color: #829778; padding: 50px;">
+    <div class="col-md-6 d-flex align-items-center mx-auto">
+      <!-- Icono de la empresa -->
+      <img src="{% static 'logo.jpg' %}" class="rounded-image-logo" alt="...">
     </div>
-  </div>
+    <div class="col-md-6 d-flex align-items-center mx-auto">
+      <!-- Título centrado horizontal y verticalmente -->
+      <h2 style="color: #ffffff;" class="logo-inicio text-center">VERDANVEST UNLOCKS THE POWER OF MYCELIUM TO GROW BETTER MATERIALS</h2>
+    </div>
+</div>
 
-  <!-- Sección de productos -->
-  <div class="container">
-    <div class="row">
-      <!-- Producto 1 -->
-      <div class="col-md-4">
-        <div class="card">
-          <img src="..." class="card-img-top" alt="...">
-          <div class="card-body">
-            <h5 class="card-title">Producto 1</h5>
-            <p class="card-text">Descripción corta del producto 1.</p>
-            <a href="#" class="btn btn-primary">Ver más</a>
-          </div>
+<div class="row mt-5">
+    <!-- Columna izquierda (pequeña) con 5 imágenes -->
+    <div class="col-md-2">
+        <h2>Grow with us</h2>
+        <div class="row mt-3">
+            <div class="col-md-12 mb-3">
+                <img src="{% static 'logo.jpg' %}" class="rounded-image-cuadro" alt="Cuadro 1">
+            </div>
+            <div class="col-md-12 mb-3">
+                <img src="{% static 'logo.jpg' %}" class="rounded-image-cuadro" alt="Cuadro 2">
+            </div>
+            <div class="col-md-12 mb-3">
+                <img src="{% static 'cuadro3.jpg' %}" class="rounded-image-cuadro" alt="Cuadro 3">
+            </div>
+            <div class="col-md-12 mb-3">
+                <img src="{% static 'cuadro4.jpg' %}" class="rounded-image-cuadro" alt="Cuadro 4">
+            </div>
+            <div class="col-md-12 mb-3">
+                <img src="{% static 'cuadro5.jpg' %}" class="rounded-image-cuadro" alt="Cuadro 5">
+            </div>
         </div>
-      </div>
-      <!-- Producto 2 -->
-      <div class="col-md-4">
-        ...
-      </div>
-      <!-- Producto 3 -->
-      <div class="col-md-4">
-        ...
-      </div>
     </div>
-  </div>
+
+    <!-- Columna central (grande) con la imagen principal -->
+    <div class="col-md-6">
+        <img src="{% static 'logo.jpg' %}" class="rounded-image-grande mb-3" alt="Imagen Grande">
+    </div>
+
+    <!-- Columna derecha (pequeña) con información del producto -->
+    <div class="col-md-2">
+        <p>Información del producto...</p>
+    </div>
+</div>
+
+
+
 
   <footer class="footer mt-auto py-3">
     <div class="container text-center">

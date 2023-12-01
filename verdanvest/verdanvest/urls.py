@@ -21,7 +21,7 @@ from home import views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('auth/', include('usuario.urls')),
-    path('detail/', include('ingredientes_materiales.urls')),
+    path('content/', include('ingredientes_materiales.urls')),
     path('dashboard/', include('dashboard_marca.urls')),
     path('', include('home.urls')),
     path('catalog/', include('catalogo.urls')),

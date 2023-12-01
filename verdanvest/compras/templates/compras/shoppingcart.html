@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 {% load static %}
 {% block style %}
-  <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
 {% endblock %}
 {% block content %}
 <div class="checkout-container">
@@ -23,7 +23,7 @@
     <div class="cart-products">
       <!-- Producto 1 -->
       <div class="product">
-        <img src="{% static 'readyto.webp' %}" alt="Product 1">
+        <img src="{% static 'img/readyto.webp' %}" alt="Product 1">
         <div class="product-details">
           <h3>Product 1</h3>
           <p>$50.00</p>
@@ -37,7 +37,7 @@
 
       <!-- Producto 2 -->
       <div class="product">
-        <img src="{% static 'readyto.webp' %}" alt="Product 2">
+        <img src="{% static 'img/readyto.webp' %}" alt="Product 2">
         <div class="product-details">
           <h3>Product 2</h3>
           <p>$30.00</p>
@@ -58,7 +58,7 @@
   <!-- Sección de métodos de pago -->
   <div class="payment-section">
     <h2 class="payment-methods">Methods of Payment</h2>
-    <img src="{% static 'logo.jpg' %}" alt="Payment Methods" class="payment-image">
+    <img src="{% static 'img/logo.jpg' %}" alt="Payment Methods" class="payment-image">
 
     <p class="free-shipping">FREE SHIPPING</p>
     <p class="shipping-details">Delivery within 4 to 6 business days</p>
@@ -74,4 +74,183 @@
     details.style.display = details.style.display === 'none' ? 'block' : 'none';
   }
 </script>
+<style>
+  body {
+    background-color: #f4f4f4;
+    margin: 0;
+    font-family: Arial, sans-serif;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+  }
+
+  .navbar {
+    background-color: #f4f4f4;
+    padding-top: 1rem;
+    padding-bottom: 0.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-bottom: 1px solid #ccc;
+    position: relative;
+  }
+
+  .navbar-brand {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+  }
+
+  .nav {
+    width: 100%;
+    justify-content: center;
+    padding-left: 0;
+  }
+
+  .nav-item {
+    display: inline-block;
+    margin: 0 10px;
+  }
+
+  .nav-link {
+    color: black;
+    font-size: 16px;
+    text-decoration: none;
+  }
+
+  .nav-link:hover {
+    text-decoration: underline;
+  }
+
+  .overlay-word {
+    position: absolute;
+    top: 0;
+    right: 0;
+    color: white;
+    padding: 5px;
+    margin: 5px;
+  }
+
+  .search-cart-login {
+    display: flex;
+    align-items: center;
+    height: 40px;
+    /* Ajusta la altura según tus necesidades */
+  }
+
+  .login-link,
+  .search-bar,
+  .cart-icon {
+    margin-left: 10px;
+    margin-right: 5px;
+    height: 100%;
+    /* Ajusta la altura según tus necesidades */
+  }
+
+  .login-link {
+    font-size: 14px;
+    /* Ajusta el tamaño del texto según tus necesidades */
+  }
+
+  .search-bar {
+    border: none;
+    padding: 5px;
+    border-radius: 3px;
+  }
+
+  .cart-icon,
+  .login-link {
+    color: black;
+    cursor: pointer;
+  }
+
+  .cart-icon img {
+    height: 100%;
+    /* Ajusta la altura según tus necesidades */
+  }
+
+  .footer {
+    background-color: #333333;
+    color: white;
+    padding: 20px 0;
+    width: 100%;
+    text-align: center;
+  }
+
+
+  .checkout-container {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+  }
+
+  .cart-section {
+    flex: 7;
+  }
+
+  .payment-section {
+    flex: 2;
+    border: 1px solid #000;
+    padding: 20px;
+    border-radius: 10px;
+    height: 400px;
+    align-content: center;
+
+  }
+
+  .payment-section p {
+    text-align: center;
+
+  }
+
+
+
+  .cart-title {
+    font-size: 24px;
+  }
+
+  .subtotal {
+    font-size: 18px;
+  }
+
+  .cart-summary {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
+    /* Ajuste: Menos espacio arriba del resumen */
+  }
+
+
+  .line {
+    border-top: 1px solid #000;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    margin-right: 40px;
+  }
+
+
+
+  .payment-methods {
+    text-align: center;
+  }
+
+  .payment-image {
+    max-width: 100px;
+    margin-top: 10px;
+  }
+
+  .free-shipping {
+    font-size: 16px;
+    margin-top: 20px;
+  }
+
+  .shipping-details {
+    font-size: 14px;
+  }
+
+  .cart-link {
+    height: 100%;
+    display: inline-block;
+  }
+</style>
 {% endblock %}

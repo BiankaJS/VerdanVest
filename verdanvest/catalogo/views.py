@@ -11,7 +11,7 @@ def productDetail(request, productId):
 def catalog(request, categoryId=None):
   try: 
     if categoryId is not None:
-      products = Producto.objects.filter(categoria__id=categoriaId)
+      products = Producto.objects.filter(categoria__id=categoryId)
     else:
       products = Producto.objects.all()
     context = {

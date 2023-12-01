@@ -1,325 +1,70 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Tienda de Moda Sostenible</title>
-  <!-- Enlace a Bootstrap CSS -->
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-  <style>
-         body {
-            background-color: #f4f4f4;
-            margin: 0;
-            font-family: Arial, sans-serif;
-        }
-
-        .navbar {
-            background-color: #f4f4f4;
-            padding-top: 1rem;
-            padding-bottom: 0.5rem;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            border-bottom: 1px solid #ccc;
-            position: relative;
-        }
-
-        .nav {
-            width: 100%;
-            justify-content: center;
-            padding-left: 0;
-        }
-
-        .nav-item {
-            display: inline-block;
-            margin: 0 10px;
-        }
-
-        .nav-link {
-            color: black;
-            font-size: 16px;
-            text-decoration: none;
-        }
-
-        .nav-link:hover {
-            text-decoration: underline;
-        }
-
-        .overlay-word {
-            position: absolute;
-            top: 0;
-            right: 0;
-            color: white;
-            padding: 5px;
-            margin: 5px;
-        }
-
-        .search-cart-login {
-            display: flex;
-            align-items: center;
-            height: 40px;
-            /* Ajustar altura por si no les gusta */
-        }
-
-        .login-link,
-        .search-bar,
-        .cart-icon {
-            margin-left: 10px;
-            margin-right: 5px;
-            height: 100%;
-            /* Ajustar altura por si no les gusta */
-        }
-
-        .login-link {
-            font-size: 14px;
-            /* Ajustar altura por si no les gusta */
-        }
-
-        .search-bar {
-            border: none;
-            padding: 5px;
-            border-radius: 3px;
-        }
-
-        .cart-icon,
-        .login-link {
-            color: black;
-            cursor: pointer;
-        }
-
-        .cart-icon img {
-            height: 100%;
-            /* Ajustar altura por si no les gusta */
-        }
-
-        .footer {
-            background-color: #333333;
-            color: white;
-            padding: 20px 0;
-            width: 100%;
-            text-align: center;
-            position: relative;
-            clear: both;
-            margin-top: 2rem;
-        }
-
-        .material-content {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: space-between;
-            padding: 2rem;
-            max-width: 1200px;
-            margin: auto;
-        }
-
-        .material-image {
-            flex-basis: 45%;
-            overflow: hidden;
-            height: auto;
-            /* Se ajusta dinámicamente a la imagen */
-        }
-
-        .material-image img {
-            width: 100%;
-            height: auto;
-            object-fit: cover;
-            border-radius: 15% 30% 40% 13% / 20% 30% 25% 50%;
-            margin-top: 50px;
-        }
-
-        .text-section {
-            flex-basis: 50%;
-            text-align: left;
-            margin-top: 5rem;
-        }
-
-        .sustainability-section {
-            background-color: #f4f4f4;
-            padding: 2rem;
-            margin-top: 1rem;
-            max-width: 100%;
-            /* Para que ocupe el espacio disponible */
-        }
-
-        .title-section {
-            text-align: start;
-            margin-top: 2rem;
-            margin-left: 20px;
-        }
-
-        .title-section h2 {
-            font-size: 2.5rem;
-            margin-bottom: 1rem;
-        }
-
-        .form-control {
-            margin-bottom: 20px;
-        }
-        .footer {
-            background-color: #333333;
-            color: white;
-            padding: 20px 0;
-        }
-         /* Estilos adicionales para las imágenes */
-         .rounded-image {
-            border-radius: 10px; /* Bordes redondos */
-            width: 400px; /* Ancho de la imagen */
-            height: 500px; /* Altura de la imagen */
-            object-fit: cover; /* Ajusta la imagen para cubrir el contenedor */
-            margin-bottom: 20px; /* Espacio entre cada imagen */
-        }
-        /* Estilos adicionales para el texto */
-        .text-large {
-            font-size: 24px; /* Tamaño de fuente más grande */
-            font-weight: bold; /* Negrita */
-            color: black; /* Color del texto en negro */
-        }
-        body {
-            margin: 0; /* Elimina el margen del cuerpo de la página */
-        }
-        .container-fluid {
-            padding: 30px; /* Agrega relleno al contenedor fluido para crear un margen */
-        }
-
-
-        .rounded-image-logo {
-            border-radius: 50%;
-            display: block;
-            margin: 0 auto; /* Centrar la imagen horizontalmente */
-            width: 300px; /* Ajusta el ancho según tus necesidades */
-            height: 300px; /* Ajusta el alto según tus necesidades */
-            object-fit: cover; /* Ajusta la forma en que la imagen se ajusta dentro del contenedor */
-        }
-
-      
-</style>
-</head>
-<body>
-  
-
-  <nav class="navbar">
-    <a class="navbar-brand" href="#">VERDANVEST</a>
-    <div class="nav justify-content-center">
-        <a class="nav-link active" href="#">HOME</a>
-        <a class="nav-link" href="#">SHOP</a>
-        <a class="nav-link" href="#">ABOUT</a>
-        <a class="nav-link" href="#">CAR SHOP</a>
-        <a class="nav-link" href="#" class="login-link">LOG IN/SIGN UP</a>
+{% extends 'base.html' %}
+{% load static %}
+{% block style %}
+  <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+{% endblock %}
+{% block content %}
+<img src="{% static 'img/Prueba.png' %}" class="img-fluid" alt="...">
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-3 text-center">
+      <p class="text-large">READY TO WEAR</p>
     </div>
-    <div class="overlay-word search-cart-login">
-        <!-- <a href="#" class="login-link">LOG IN/SIGN UP</a> -->
-        <input class="search-bar" type="text" placeholder="Search">
-        {% load static %}
-        <img src="{% static 'bolsacompra.png' %}" alt="..." class="cart-icon"></img>
-        <img src="{% static 'perfil.png' %}" alt="..." class="cart-icon"></img>
+    <div class="col-md-3">
+      <img src="{% static 'img/ready.webp' %}" class="rounded-image" alt="...">
     </div>
-</nav>
-  {% load static %}
-  <img src="{% static 'Prueba.png' %}" class="img-fluid" alt="...">
-  
-  
-  
-  <div class="container-fluid">
-    <div class="row">
-      <div class="col-md-3 text-center">
-        <p class="text-large">READY TO WEAR</p>
+    <div class="col-md-3">
+      <img src="{% static 'img/readyt.webp' %}" class="rounded-image" alt="...">
+    </div>
+    <div class="col-md-3">
+      <img src="{% static 'img/readyto.webp' %}" class="rounded-image" alt="...">
+    </div>
+  </div>
+</div>
+
+<div class="row mt-5" style="background-color: #829778; padding: 50px;">
+  <div class="col-md-6 d-flex align-items-center mx-auto">
+    <!-- Icono de la empresa -->
+    <img src="{% static 'img/logo.jpg' %}" class="rounded-image-logo" alt="...">
+  </div>
+  <div class="col-md-6 d-flex align-items-center mx-auto">
+    <!-- Título centrado horizontal y verticalmente -->
+    <h2 style="color: #ffffff;" class="logo-inicio text-center">VERDANVEST UNLOCKS THE POWER OF MYCELIUM TO GROW BETTER
+      MATERIALS</h2>
+  </div>
+</div>
+
+<div class="row mt-5">
+  <!-- Columna izquierda (pequeña) con 5 imágenes -->
+  <div class="col-md-2">
+    <h2>Grow with us</h2>
+    <div class="row mt-3">
+      <div class="col-md-12 mb-3">
+        <img src="{% static 'img/logo.jpg' %}" class="rounded-image-cuadro" alt="Cuadro 1">
       </div>
-      <div class="col-md-3">
-        <img src="{% static 'ready.webp' %}" class="rounded-image" alt="...">
+      <div class="col-md-12 mb-3">
+        <img src="{% static 'img/logo.jpg' %}" class="rounded-image-cuadro" alt="Cuadro 2">
       </div>
-      <div class="col-md-3">
-        <img src="{% static 'readyt.webp' %}" class="rounded-image" alt="...">
+      <div class="col-md-12 mb-3">
+        <img src="{% static 'img/cuadro3.jpg' %}" class="rounded-image-cuadro" alt="Cuadro 3">
       </div>
-      <div class="col-md-3">
-        <img src="{% static 'readyto.webp' %}" class="rounded-image" alt="...">
+      <div class="col-md-12 mb-3">
+        <img src="{% static 'img/cuadro4.jpg' %}" class="rounded-image-cuadro" alt="Cuadro 4">
+      </div>
+      <div class="col-md-12 mb-3">
+        <img src="{% static 'img/cuadro5.jpg' %}" class="rounded-image-cuadro" alt="Cuadro 5">
       </div>
     </div>
   </div>
 
-  <div class="row mt-5" style="background-color: #829778; padding: 50px;">
-    <div class="col-md-6 d-flex align-items-center mx-auto">
-      <!-- Icono de la empresa -->
-      <img src="{% static 'logo.jpg' %}" class="rounded-image-logo" alt="...">
-    </div>
-    <div class="col-md-6 d-flex align-items-center mx-auto">
-      <!-- Título centrado horizontal y verticalmente -->
-      <h2 style="color: #ffffff;" class="logo-inicio text-center">VERDANVEST UNLOCKS THE POWER OF MYCELIUM TO GROW BETTER MATERIALS</h2>
-    </div>
+  <!-- Columna central (grande) con la imagen principal -->
+  <div class="col-md-6">
+    <img src="{% static 'img/logo.jpg' %}" class="rounded-image-grande mb-3" alt="Imagen Grande">
+  </div>
+
+  <!-- Columna derecha (pequeña) con información del producto -->
+  <div class="col-md-2">
+    <p>Información del producto...</p>
+  </div>
 </div>
-
-<div class="row mt-5">
-    <!-- Columna izquierda (pequeña) con 5 imágenes -->
-    <div class="col-md-2">
-        <h2>Grow with us</h2>
-        <div class="row mt-3">
-            <div class="col-md-12 mb-3">
-                <img src="{% static 'logo.jpg' %}" class="rounded-image-cuadro" alt="Cuadro 1">
-            </div>
-            <div class="col-md-12 mb-3">
-                <img src="{% static 'logo.jpg' %}" class="rounded-image-cuadro" alt="Cuadro 2">
-            </div>
-            <div class="col-md-12 mb-3">
-                <img src="{% static 'cuadro3.jpg' %}" class="rounded-image-cuadro" alt="Cuadro 3">
-            </div>
-            <div class="col-md-12 mb-3">
-                <img src="{% static 'cuadro4.jpg' %}" class="rounded-image-cuadro" alt="Cuadro 4">
-            </div>
-            <div class="col-md-12 mb-3">
-                <img src="{% static 'cuadro5.jpg' %}" class="rounded-image-cuadro" alt="Cuadro 5">
-            </div>
-        </div>
-    </div>
-
-    <!-- Columna central (grande) con la imagen principal -->
-    <div class="col-md-6">
-        <img src="{% static 'logo.jpg' %}" class="rounded-image-grande mb-3" alt="Imagen Grande">
-    </div>
-
-    <!-- Columna derecha (pequeña) con información del producto -->
-    <div class="col-md-2">
-        <p>Información del producto...</p>
-    </div>
-</div>
-
-
-
-
-  <footer class="footer mt-auto py-3">
-    <div class="container text-center">
-        <span>JOIN OUR COMMUNITY</span>
-        <div>By subscribing you agree to our Privacy Policy, and Terms and Conditions.</div>
-        <!-- Add your email subscription form here -->
-        <form class="form-inline justify-content-center">
-            <input type="email" class="form-control" placeholder="Your email">
-            <button type="submit" class="btn btn-secondary">Subscribe</button>
-        </form>
-        <div class="row mt-4">
-            <div class="col">
-                <div>Collections</div>
-                <div>About</div>
-                <div>Contact Us</div>
-            </div>
-            <div class="col">
-                <div>Zero</div>
-                <div>Materials</div>
-                <div>Sustainability</div>
-            </div>
-            <div class="col">
-                <div>Loewe</div>
-                <div>Avenida Universidad 602, Lomas del Campestre, 37150 León, Gto.</div>
-                <div>+52 477 192 3212</div>
-            </div>
-            <div class="col">
-                <div>Follow Us</div>
-                <!-- Social media icons here -->
-            </div>
-        </div>
-    </div>
-</footer>
-
-  <!-- Enlace a Bootstrap JS y dependencias -->
-  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.1/dist/umd/popper.min.js"></script>
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-</body>
-</html>
+{% endblock %}

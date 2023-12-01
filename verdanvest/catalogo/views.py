@@ -1,12 +1,13 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from catalogo.models import Producto
 
-def productDetail(request, productId):
-  try:
-    product = get_object_or_404(Producto, pk=productId)
-    return render(request, "catalogo/detailproduct.html", {"product": product})
-  except:
-    return redirect("catalogo/catalog.html", {"error_message": "Ocurred an error"})
+def productDetail(request):
+  # try:
+  #   product = get_object_or_404(Producto, pk=1)
+  #   return render(request, "catalogo/detailproduct.html", {})
+  # except:
+  #   return redirect("catalogo/catalog.html", {"error_message": "Ocurred an error"})
+  return render(request, "catalogo/detailproduct.html", {""})
 
 def catalog(request, categoryId=None):
   try: 

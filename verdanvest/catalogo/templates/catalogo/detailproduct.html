@@ -6,7 +6,7 @@
   <div class="row product-info">
     <div class="col-md-5">
       <!-- Image placeholder -->
-      <img src="{% static 'jabonexfoliante.webp' %}" class="img-fluid" alt="Product">
+      <img src="{% static 'img/jabonexfoliante.webp' %}" class="img-fluid" alt="Product">
     </div>
     <div class="col-md-7">
       <h3>EXFOLIATING BAR SOAP</h3>
@@ -50,7 +50,7 @@
       <!-- Product placeholders -->
       <div class="col-md-3">
         <div class="card h-100">
-          <img src="{% static 'donspack.webp' %}" class="card-img-top" alt="...">
+          <img src="{% static 'img/donspack.webp' %}" class="card-img-top" alt="...">
           <div class="card-body">
             <p class="card-text">Dons Pack</p>
             <p class="card-text">$55.00 USD</p>
@@ -59,7 +59,7 @@
       </div>
       <div class="col-md-3">
         <div class="card h-100">
-          <img src="{% static 'flixpack.webp' %}" class="card-img-top" alt="...">
+          <img src="{% static 'img/flixpack.webp' %}" class="card-img-top" alt="...">
           <div class="card-body">
             <p class="card-text">Flix pack</p>
             <p class="card-text">$45.00 USD</p>
@@ -68,7 +68,7 @@
       </div>
       <div class="col-md-3">
         <div class="card h-100">
-          <img src="{% static 'toothbrush.webp' %}" class="card-img-top" alt="...">
+          <img src="{% static 'img/toothbrush.webp' %}" class="card-img-top" alt="...">
           <div class="card-body">
             <p class="card-text">Tootbrush</p>
             <p class="card-text">$24.00 USD</p>
@@ -77,7 +77,7 @@
       </div>
       <div class="col-md-3">
         <div class="card h-100">
-          <img src="{% static 'dentalfloss.webp' %}" class="card-img-top" alt="...">
+          <img src="{% static 'img/dentalfloss.webp' %}" class="card-img-top" alt="...">
           <div class="card-body">
             <p class="card-text">Dental Floss</p>
             <p class="card-text">$05.00 USD</p>
@@ -96,4 +96,177 @@
     details.style.display = details.style.display === 'none' ? 'block' : 'none';
   }
 </script>
+<style>
+  body {
+    background-color: #f4f4f4;
+    margin: 0;
+    font-family: Arial, sans-serif;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+  }
+
+  .navbar {
+    background-color: #f4f4f4;
+    padding-top: 1rem;
+    padding-bottom: 0.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-bottom: 1px solid #ccc;
+    position: relative;
+  }
+
+  .navbar-brand {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+  }
+
+  .nav {
+    width: 100%;
+    justify-content: center;
+    padding-left: 0;
+  }
+
+  .nav-item {
+    display: inline-block;
+    margin: 0 10px;
+  }
+
+  .nav-link {
+    color: black;
+    font-size: 16px;
+    text-decoration: none;
+  }
+
+  .nav-link:hover {
+    text-decoration: underline;
+  }
+
+  .overlay-word {
+    position: absolute;
+    top: 0;
+    right: 0;
+    color: white;
+    padding: 5px;
+    margin: 5px;
+  }
+
+  .search-cart-login {
+    display: flex;
+    align-items: center;
+    height: 40px;
+    /* Ajusta la altura según tus necesidades */
+  }
+
+  .login-link,
+  .search-bar,
+  .cart-icon {
+    margin-left: 10px;
+    margin-right: 5px;
+    height: 100%;
+    /* Ajusta la altura según tus necesidades */
+  }
+
+  .login-link {
+    font-size: 14px;
+    /* Ajusta el tamaño del texto según tus necesidades */
+  }
+
+  .search-bar {
+    border: none;
+    padding: 5px;
+    border-radius: 3px;
+  }
+
+  .cart-icon,
+  .login-link {
+    color: black;
+    cursor: pointer;
+  }
+
+  .cart-icon img {
+    height: 100%;
+    /* Ajusta la altura según tus necesidades */
+  }
+
+  .footer {
+    background-color: #333333;
+    color: white;
+    padding: 20px 0;
+    width: 100%;
+    text-align: center;
+  }
+
+  .product-info {
+    margin-top: 20px;
+  }
+
+  .product-info h3 {
+    margin-bottom: 10px;
+  }
+
+  .brand {
+    font-weight: bold;
+  }
+
+  .price {
+    color: green;
+  }
+
+  .stepper {
+    margin-bottom: 20px;
+  }
+
+  .title {
+    font-size: 24px;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 10px;
+  }
+
+  .description {
+    text-align: justify;
+    margin-bottom: 20px;
+  }
+
+  .materials {
+    margin-bottom: 20px;
+  }
+
+  .material-item {
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    border: 1px solid #ccc;
+    padding: 5px;
+    margin-bottom: 5px;
+  }
+
+  .material-item span {
+    margin-left: auto;
+  }
+
+  .material-item p {
+    margin-bottom: 0;
+    margin-left: 10px;
+  }
+
+  .material-details {
+    display: none;
+  }
+
+  .recommended-products h3 {
+    margin: 20px 0;
+  }
+
+  .recommended-products .card {
+    margin-bottom: 20px;
+  }
+
+  .form-control {
+    margin-bottom: 20px;
+  }
+</style>
 {% endblock %}

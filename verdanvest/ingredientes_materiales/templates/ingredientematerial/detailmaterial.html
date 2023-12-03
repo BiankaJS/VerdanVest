@@ -10,7 +10,7 @@
 
 <div class="material-content">
     <div class="material-image">
-        <img src="{% static 'desserto.webp' %}" alt="Material Image">
+        <img src="{% static 'img/desserto.webp' %}" alt="Material Image">
     </div>
 
     <div class="text-section">
@@ -36,6 +36,155 @@
         food.
     </p>
 </div>
-
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<style>
+    body {
+        background-color: #f4f4f4;
+        margin: 0;
+        font-family: Arial, sans-serif;
+    }
+
+    .navbar {
+        background-color: #f4f4f4;
+        padding-top: 1rem;
+        padding-bottom: 0.5rem;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        border-bottom: 1px solid #ccc;
+        position: relative;
+    }
+
+    .nav {
+        width: 100%;
+        justify-content: center;
+        padding-left: 0;
+    }
+
+    .nav-item {
+        display: inline-block;
+        margin: 0 10px;
+    }
+
+    .nav-link {
+        color: black;
+        font-size: 16px;
+        text-decoration: none;
+    }
+
+    .nav-link:hover {
+        text-decoration: underline;
+    }
+
+    .overlay-word {
+        position: absolute;
+        top: 0;
+        right: 0;
+        color: white;
+        padding: 5px;
+        margin: 5px;
+    }
+
+    .search-cart-login {
+        display: flex;
+        align-items: center;
+        height: 40px;
+        /* Ajustar altura por si no les gusta */
+    }
+
+    .login-link,
+    .search-bar,
+    .cart-icon {
+        margin-left: 10px;
+        margin-right: 5px;
+        height: 100%;
+        /* Ajustar altura por si no les gusta */
+    }
+
+    .login-link {
+        font-size: 14px;
+        /* Ajustar altura por si no les gusta */
+    }
+
+    .search-bar {
+        border: none;
+        padding: 5px;
+        border-radius: 3px;
+    }
+
+    .cart-icon,
+    .login-link {
+        color: black;
+        cursor: pointer;
+    }
+
+    .cart-icon img {
+        height: 100%;
+        /* Ajustar altura por si no les gusta */
+    }
+
+    .footer {
+        background-color: #333333;
+        color: white;
+        padding: 20px 0;
+        width: 100%;
+        text-align: center;
+        position: relative;
+        clear: both;
+        margin-top: 2rem;
+    }
+
+    .material-content {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        padding: 2rem;
+        max-width: 1200px;
+        margin: auto;
+    }
+
+    .material-image {
+        flex-basis: 45%;
+        overflow: hidden;
+        height: auto;
+        /* Se ajusta dinámicamente a la imagen */
+    }
+
+    .material-image img {
+        width: 100%;
+        height: auto;
+        object-fit: cover;
+        border-radius: 15% 30% 40% 13% / 20% 30% 25% 50%;
+        margin-top: 50px;
+    }
+
+    .text-section {
+        flex-basis: 50%;
+        text-align: left;
+        margin-top: 5rem;
+    }
+
+    .sustainability-section {
+        background-color: #f4f4f4;
+        padding: 2rem;
+        margin-top: 1rem;
+        max-width: 100%;
+        /* Para que ocupe el espacio disponible */
+    }
+
+    .title-section {
+        text-align: start;
+        margin-top: 2rem;
+        margin-left: 20px;
+    }
+
+    .title-section h2 {
+        font-size: 2.5rem;
+        margin-bottom: 1rem;
+    }
+
+    .form-control {
+        margin-bottom: 20px;
+    }
+</style>
 {% endblock %}

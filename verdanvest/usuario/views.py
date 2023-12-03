@@ -6,3 +6,7 @@ def login_view(request):
 
 def register_view(request):
     return render(request, 'usuario/register.html')
+
+def profile_view(request):
+    return render(request, 'usuario/profile.html')
+

@@ -7,7 +7,7 @@ def productDetail(request):
   #   return render(request, "catalogo/detailproduct.html", {})
   # except:
   #   return redirect("catalogo/catalog.html", {"error_message": "Ocurred an error"})
-  return render(request, "catalogo/detailproduct.html", {""})
+  return render(request, "catalogo/detailproduct.html")
 
 def catalog(request, categoryId=None):
   try: 

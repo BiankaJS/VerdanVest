@@ -34,39 +34,59 @@
   </div>
 </div>
 
-<div class="row mt-5">
+<h1 class="grow-header">Grow with us</h1>
+<div class="row mt-5 justify-content-center">
   <!-- Columna izquierda (pequeña) con 5 imágenes -->
-  <div class="col-md-2">
-    <h2>Grow with us</h2>
+  <div class="col-md-2 text-center">
     <div class="row mt-3">
       <div class="col-md-12 mb-3">
-        <img src="{% static 'img/logo.jpg' %}" class="rounded-image-cuadro" alt="Cuadro 1">
+        <img src="{% static 'img/prueba1.jpg' %}" class="rounded-image-cuadro" alt="Cuadro 1"
+          style="width: 100px; height: 100px;" onclick="cambiarImagenPrincipal(this);">
       </div>
       <div class="col-md-12 mb-3">
-        <img src="{% static 'img/logo.jpg' %}" class="rounded-image-cuadro" alt="Cuadro 2">
+        <img src="{% static 'img/prueba2.jpg' %}" class="rounded-image-cuadro" alt="Cuadro 1"
+          style="width: 100px; height: 100px;" onclick="cambiarImagenPrincipal(this);">
       </div>
       <div class="col-md-12 mb-3">
-        <img src="{% static 'img/cuadro3.jpg' %}" class="rounded-image-cuadro" alt="Cuadro 3">
+        <img src="{% static 'img/prueba3.jpg' %}" class="rounded-image-cuadro" alt="Cuadro 2"
+          style="width: 100px; height: 100px;" onclick="cambiarImagenPrincipal(this);">
       </div>
       <div class="col-md-12 mb-3">
-        <img src="{% static 'img/cuadro4.jpg' %}" class="rounded-image-cuadro" alt="Cuadro 4">
+        <img src="{% static 'img/prueba4.jpg' %}" class="rounded-image-cuadro" alt="Cuadro 3"
+          style="width: 100px; height: 100px;" onclick="cambiarImagenPrincipal(this);">
       </div>
       <div class="col-md-12 mb-3">
-        <img src="{% static 'img/cuadro5.jpg' %}" class="rounded-image-cuadro" alt="Cuadro 5">
+        <img src="{% static 'img/prueba5.jpg' %}" class="rounded-image-cuadro" alt="Cuadro 4"
+          style="width: 100px; height: 100px;" onclick="cambiarImagenPrincipal(this);">
       </div>
     </div>
   </div>
 
   <!-- Columna central (grande) con la imagen principal -->
-  <div class="col-md-6">
-    <img src="{% static 'img/logo.jpg' %}" class="rounded-image-grande mb-3" alt="Imagen Grande">
+  <div class="col-md-6 text-center">
+    <img id="imagenPrincipal" src="{% static 'img/prueba1.jpg' %}" class="rounded-image-grande" alt="Imagen Grande"
+      style="width: 800px; height: 600px;">
   </div>
 
   <!-- Columna derecha (pequeña) con información del producto -->
   <div class="col-md-2">
-    <p>Información del producto...</p>
+    <h3 class="text-center">DEZI</h3>
+    <p>Discover our environmentally conscious makeup collection that enhances your beauty while caring for the planet.
+    </p>
+    <p><strong>Brand:</strong> GreenGlow Cosmetics</p>
   </div>
 </div>
+<script>
+  // Función para cambiar la imagen central
+  function cambiarImagenPrincipal(imagen) {
+    // Obtener el elemento de la imagen principal
+    var imagenPrincipal = document.getElementById('imagenPrincipal');
+
+    // Cambiar la fuente de la imagen principal
+    imagenPrincipal.src = imagen.src;
+  }
+</script>
+
 <style>
   body {
     background-color: #f4f4f4;
@@ -269,6 +289,21 @@
     /* Ajusta el alto según tus necesidades */
     object-fit: cover;
     /* Ajusta la forma en que la imagen se ajusta dentro del contenedor */
+  }
+
+  .rounded-image-cuadro {
+    border-radius: 10px;
+  }
+
+  .rounded-image-grande {
+    border-radius: 20px;
+  }
+
+  .grow-header {
+    margin-bottom: 20px;
+    /* Ajusta el valor según tu preferencia */
+    font-weight: bold;
+    margin-top: 20px;
   }
 </style>
 {% endblock %}

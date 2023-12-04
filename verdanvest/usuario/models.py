@@ -5,11 +5,7 @@ from django.conf import settings
 from catalogo.models import Producto
 
 class User(AbstractUser):
-    ROLE_CHOICES = (
-        ('proveedor', 'Proveedor'),
-        ('cliente', 'Cliente'),
-    )
-    role = models.CharField(max_length=50, choices=ROLE_CHOICES, default='cliente')
+    role = models.IntegerField(null=False, blank=False)
 
 class DjangoAdminLog(models.Model):
     action_time = models.DateTimeField()

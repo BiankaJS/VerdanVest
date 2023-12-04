@@ -15,8 +15,8 @@ class Producto(models.Model):
     nombre = models.TextField()
     descripcion = models.TextField(null=False)
     precio = models.DecimalField(max_digits=10, decimal_places=2)
-    marca = models.ForeignKey(Marca, on_delete=models.CASCADE)
-    categoria = models.ForeignKey(Categoria, on_delete=models.CASCADE)
+    marca = models.ForeignKey(Marca, on_delete=models.CASCADE, default=1)
+    categoria = models.ForeignKey(Categoria, on_delete=models.CASCADE, default= 1)
     calificacion_salud = models.DecimalField(max_digits=2, decimal_places=1, null=True, blank=True) 
     urlImagen = models.TextField(null=True, blank=True)
 

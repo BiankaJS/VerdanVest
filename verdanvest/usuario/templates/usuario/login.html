@@ -10,7 +10,7 @@
         <input type="email" class="form-control" id="emailInput" placeholder="Email address">
         <input type="password" class="form-control" id="passwordInput" placeholder="Password">
         <div class="signup-link">
-            <p>If you don't have an account, <a href="{% url 'auth:register' %}">create one here</a>.</p>
+            <p>If you don't have an account, <a href="{% url 'auth:register' %}"><strong>create one here</strong></a>.</p>
         </div>
         <button type="submit" class="btn btn-submit">SUBMIT</button>
     </form>
@@ -150,6 +150,10 @@
 
     .form-control {
         margin-bottom: 20px;
+    }
+    a{
+        text-decoration: none;
+        color: #829765;
     }
 </style>
 {% endblock %}

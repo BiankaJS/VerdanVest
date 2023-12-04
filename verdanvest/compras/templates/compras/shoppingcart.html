@@ -8,7 +8,7 @@
   <!-- Sección del carrito -->
   <div class="cart-section">
     <h1 class="cart-title"><strong>Shopping Cart </strong> </h1>
-    <p class="subtotal">Subtotal: $100.00</p>
+    <p class="subtotal" style="color: #888;" >Subtotal: $100.00</p>
 
     <!-- Resumen del carrito -->
     <div class="cart-summary">
@@ -23,27 +23,16 @@
     <div class="cart-products">
       <!-- Producto 1 -->
       <div class="product">
-        <img src="{% static 'img/readyto.webp' %}" alt="Product 1">
-        <div class="product-details">
-          <h3>Product 1</h3>
-          <p>$50.00</p>
+        <div class="product-content">
+          <img src="{% static 'img/wish1.webp' %}" alt="Product 1" style="width: 300px;height: 300px;" >
+          <div class="product-details">
+            <h4><strong> ASTRAL BIKKER</strong> </h4>
+            <h5 > $ 500.00 USD</h5>
+          </div>
         </div>
-        <div class="product-actions">
-          <span class="move-to-wishlist">Move to wish list</span>
-          <span class="delete">Delete</span>
-        </div>
-      </div>
-      <div class="line"></div>
-
-      <!-- Producto 2 -->
-      <div class="product">
-        <img src="{% static 'img/readyto.webp' %}" alt="Product 2">
-        <div class="product-details">
-          <h3>Product 2</h3>
-          <p>$30.00</p>
-        </div>
-        <div class="product-actions">
-          <span class="move-to-wishlist">Move to wish list</span>
+        <div class="product-delete">
+          <!-- Agrega un icono aquí (puedes cambiar "icon.png" por la ruta correcta de tu icono) -->
+          <img src="{% static 'img/borrar.png' %}" alt="Icon" class="icon" style="width: 20px;height: 20px;">
           <span class="delete">Delete</span>
         </div>
       </div>
@@ -58,7 +47,7 @@
   <!-- Sección de métodos de pago -->
   <div class="payment-section">
     <h2 class="payment-methods">Methods of Payment</h2>
-    <img src="{% static 'img/logo.jpg' %}" alt="Payment Methods" class="payment-image">
+    <img src="{% static 'img/paryment.jpg' %}" alt="Payment Methods" class="payment-image">
 
     <p class="free-shipping">FREE SHIPPING</p>
     <p class="shipping-details">Delivery within 4 to 6 business days</p>
@@ -206,7 +195,7 @@
 
 
   .cart-title {
-    font-size: 24px;
+    font-size:xx-large;
   }
 
   .subtotal {
@@ -235,9 +224,19 @@
   }
 
   .payment-image {
-    max-width: 100px;
+    max-width: 300px;
     margin-top: 10px;
+    margin: 0 auto;
+    /* Centrar horizontalmente */
+    display: block;
+    /* Esto es importante para que funcione el margin: 0 auto; */
   }
+
+  /* Opcional: para centrar el texto horizontalmente */
+  .payment-section {
+    text-align: center;
+  }
+
 
   .free-shipping {
     font-size: 16px;
@@ -251,6 +250,28 @@
   .cart-link {
     height: 100%;
     display: inline-block;
+  }
+
+  .product {
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .product-content {
+    display: flex;
+    align-items: center;
+  }
+
+  .product-details {
+    margin-left: 10px;
+    /* Ajusta el margen según sea necesario */
+  }
+
+  .product-delete {
+    margin-top: 20px;
+  }
+  .delete {
+    text-align: center;
   }
 </style>
 {% endblock %}

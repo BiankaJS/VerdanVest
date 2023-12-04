@@ -11,6 +11,7 @@
         <h2><strong>Hi Jaramillo</strong></h2>
         <p><a href="#" onclick="cambiarContenido('personal')">Personal Information</a></p>
         <p> <a href="#" onclick="cambiarContenido('shopping')">My shopping</a></p>
+        <p><a href="{% url 'auth:logout' %}"><strong>Logout</strong></a></p>
 
     </div>
 
@@ -264,6 +265,11 @@
         border-top: 1px solid #000;
         margin-bottom: 20px;
         margin-right: 20px;
+    }
+
+    a{
+        text-decoration: none;
+        color: black;
     }
 </style>
 {% endblock %}

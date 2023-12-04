@@ -4,7 +4,11 @@
 <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
 {% endblock %}
 {% block content %}
+{% if error_message %}
+<div id="liveAlertPlaceholder">
 
+</div>
+{% endif %}
 <div class="register-container">
     <h2 class="text-center">Register</h2>
     <form method="post" action="{% url 'auth:register' %}">
@@ -193,4 +197,22 @@
         font: bold;
     }
 </style>
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const alertPlaceholder = document.getElementById('liveAlertPlaceholder');
+
+        const appendAlert = () => {
+            const wrapper = document.createElement('div');
+            wrapper.innerHTML = [
+                `<div class="alert alert-danger alert-dismissible" role="alert">`,
+                `   <div>Ocurred an error</div>`,
+                '   <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>',
+                '</div>'
+            ].join('');
+
+            alertPlaceholder.append(wrapper);
+        };
+        appendAlert();
+    });
+</script>
 {% endblock %}

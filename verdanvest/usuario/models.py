@@ -7,6 +7,9 @@ from catalogo.models import Producto
 class User(AbstractUser):
     role = models.IntegerField(null=True, blank=False)
 
+    def __str__(self):
+        return self.username
+
 class DjangoAdminLog(models.Model):
     action_time = models.DateTimeField()
     object_id = models.TextField(blank=True, null=True)

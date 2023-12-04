@@ -4,13 +4,20 @@
 <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
 {% endblock %}
 {% block content %}
+{% if error_message%}
+<div id="liveAlertPlaceholder">
+
+</div>
+{% endif %}
 <div class="login-container">
     <h2 class="text-center">Login</h2>
-    <form>
-        <input type="email" class="form-control" id="emailInput" placeholder="Email address">
-        <input type="password" class="form-control" id="passwordInput" placeholder="Password">
+    <form method="post" action="{% url 'auth:login' %}">
+        {% csrf_token %}
+        <input type="text" class="form-control" id="usernameInput" name="username" placeholder="Username">
+        <input type="password" class="form-control" id="passwordInput" name="password" placeholder="Password">
         <div class="signup-link">
-            <p>If you don't have an account, <a href="{% url 'auth:register' %}"><strong>create one here</strong></a>.</p>
+            <p>If you don't have an account, <a href="{% url 'auth:register' %}"><strong>create one here</strong></a>.
+            </p>
         </div>
         <button type="submit" class="btn btn-submit">SUBMIT</button>
     </form>
@@ -151,9 +158,28 @@
     .form-control {
         margin-bottom: 20px;
     }
-    a{
+
+    a {
         text-decoration: none;
         color: #829765;
     }
 </style>
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const alertPlaceholder = document.getElementById('liveAlertPlaceholder');
+
+        const appendAlert = () => {
+            const wrapper = document.createElement('div');
+            wrapper.innerHTML = [
+                `<div class="alert alert-danger alert-dismissible" role="alert">`,
+                `   <div>{{error_message}}</div>`,
+                '   <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>',
+                '</div>'
+            ].join('');
+
+            alertPlaceholder.append(wrapper);
+        };
+        appendAlert();
+    });
+</script>
 {% endblock %}

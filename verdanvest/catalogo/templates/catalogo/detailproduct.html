@@ -5,23 +5,24 @@
   {% if product %}
   <div class="row product-info">
     <div class="col-md-5">
-      <!-- Image placeholder -->
       <img src="{{ product.urlImagen }}" class="img-fluid" alt="Product">
     </div>
     <div class="col-md-7">
       <h3>{{product.nombre}}</h3>
       <p class="brand">{{product.marca.nombre}}</p>
       <p class="price">USD ${{product.precio}}</p>
-      <div class="stepper">
-        <label for="quantity">Quantity:</label>
-        <input type="number" id="quantity" name="quantity" min="1" value="1">
-      </div>
-      <button type="submit" class="btn btn-submit">ADD TO CAR</button>
+      <form method="post" action="{% url 'catalog:addProductCart' product.id %}">
+        {% csrf_token %}
+        <div class="stepper">
+          <label for="quantity">Quantity:</label>
+          <input type="number" id="quantity" name="quantity" min="1" value="1">
+        </div>
+        <button type="submit" class="btn btn-submit">ADD TO CAR</button>
+      </form>
       <div class="title">¡CONSIGUE UNA PIEL RADIANTE!</div>
       <p class="description">
         {{product.descripcion}}
       </p>
-
 
       <!-- <div class="title">WHAT IS IT MADE OF?</div>
       <div class="materials">
@@ -34,15 +35,12 @@
         </div>
       </div> -->
 
-
     </div>
   </div>
   {% endif %}
-  <!-- Highly recommended products -->
   <div class="recommended-products">
     <h3 class="my-4">Highly recommended!</h3>
     <div class="row">
-      <!-- Product placeholders -->
       <div class="col-md-3">
         <div class="card h-100">
           <img src="{% static 'img/donspack.webp' %}" class="card-img-top" alt="...">

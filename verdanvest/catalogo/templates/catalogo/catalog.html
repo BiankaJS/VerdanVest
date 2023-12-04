@@ -4,13 +4,13 @@
 <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
 {% endblock %}
 {% block content %}
-{% if products %}
-<h2 class="text-center-title">Bags</h2>
+{% if categoria %}
+<h2 class="text-center-title">{{categoria}}</h2>
 {% endif %}
 <a class="btn btn-primary float-end" data-bs-toggle="offcanvas" href="#offcanvasExample" role="button"
-    aria-controls="offcanvasExample" style="background-color: #829778;" style="margin-left: 50px;">
+    aria-controls="offcanvasExample" style="background-color: #829778;" style="margin-left: 50px; ">
     Search
-    <img src="{% static 'img/filter.png' %}" style="width: 8%;">
+    <img src="{% static 'img/filter.png' %}" style="width: 6%; text-align: center;">
 </a>
 <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
     <div class="offcanvas-header">

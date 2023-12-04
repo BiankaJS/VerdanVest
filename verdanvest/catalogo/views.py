@@ -1,13 +1,16 @@
 from django.shortcuts import render, get_object_or_404, redirect
-from catalogo.models import Producto, Categoria, Marca
+from catalogo.models import Producto, Categoria, Marca, ProductoIngrediente
 from ingredientes_materiales.models import Material, Ingrediente
 from compras.models import CarritoCompraDetalle, CarritoCompra
 
 def productDetail(request, productId):
     try:
         product = get_object_or_404(Producto, pk=productId)
-        print(product.nombre)
-        return render(request, "catalogo/detailproduct.html", { 'product': product })
+        ingredientes = ProductoIngrediente.objects.filter(producto_id=productId)
+        context = {
+          'product': product
+        }
+        return render(request, "catalogo/detailproduct.html", context)
     except Producto.DoesNotExist:
         return redirect("catalogo/catalog.html")
     except Exception as e:

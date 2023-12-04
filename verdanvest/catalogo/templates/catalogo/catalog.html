@@ -76,8 +76,9 @@
     <div class="row justify-content-center">
         {% for product in products %}
         <div class="col-md-4">
-            <div class="card mx-auto" style="width: 18rem;">
-                <img src="{{product.urlImagen}}" class="card-img-top" alt="Producto 1">
+            <div class="card mx-auto" style="width: 18rem; height: 20rem; margin: 10px;">
+                <img src="{{product.urlImagen}}" class="mx-auto d-block center" alt="Producto 1"
+                    style="width: 200px; height: 200px; margin-top: 20px;">
                 <div class="card-body">
                     <a href="{% url 'catalog:ProductDetail' product.id %}">
                         <h5 class="card-title"><strong>{{product.nombre}}</strong></h5>

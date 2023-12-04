@@ -1,12 +1,140 @@
 {% extends 'base.html' %}
 {% load static %}
 {% block content %}
-
 <style>
     body {
         background-color: #f4f4f4;
         margin: 0;
         font-family: Arial, sans-serif;
+    }
+
+    .navbar {
+        background-color: #f4f4f4;
+        padding-top: 1rem;
+        padding-bottom: 0.5rem;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        border-bottom: 1px solid #ccc;
+        position: relative;
+    }
+
+    .navbar-brand {
+        font-size: 24px;
+        font-weight: bold;
+        margin-bottom: 0.5rem;
+    }
+
+    .nav {
+        width: 100%;
+        justify-content: center;
+        padding-left: 0;
+    }
+
+    .nav-item {
+        display: inline-block;
+        margin: 0 10px;
+    }
+
+    a.nav-link {
+        color: black;
+        font-size: 16px;
+        text-decoration: none;
+    }
+
+    a.nav-link:hover {
+        text-decoration: none;
+        color: #45a049;
+        font: bold;
+    }
+
+    .overlay-word {
+        position: absolute;
+        top: 0;
+        right: 0;
+        color: white;
+        padding: 5px;
+        margin: 5px;
+    }
+
+    .search-cart-login {
+        display: flex;
+        align-items: center;
+        height: 40px;
+        /* Ajusta la altura según tus necesidades */
+    }
+
+    .login-link,
+    .search-bar,
+    .cart-icon {
+        margin-left: 10px;
+        margin-right: 5px;
+        height: 100%;
+        /* Ajusta la altura según tus necesidades */
+    }
+
+    .login-link {
+        font-size: 14px;
+        /* Ajusta el tamaño del texto según tus necesidades */
+    }
+
+    .search-bar {
+        border: none;
+        padding: 5px;
+        border-radius: 3px;
+    }
+
+    .cart-icon,
+    .login-link {
+        color: black;
+        cursor: pointer;
+    }
+
+    .cart-icon img {
+        height: 100%;
+        /* Ajusta la altura según tus necesidades */
+    }
+
+    .footer {
+        background-color: #333333;
+        color: white;
+        padding: 20px 0;
+        width: 100%;
+        text-align: center;
+        position: fixed;
+        bottom: 0;
+    }
+
+    .login-container {
+        max-width: 600px;
+        margin: 20px auto;
+        background: #f4f4f4;
+        padding: 20px;
+        /* box-shadow: 0px 0px 10px rgba(0,0,0,0.1); */
+        margin-top: 50px;
+        /* Ajusta el margen superior según sea necesario */
+        margin-bottom: 120px;
+        /* Ajusta el margen inferior según sea necesario */
+    }
+
+    .btn-submit {
+        background-color: #4CAF50;
+        border: none;
+        max-width: 900px;
+        width: 100%;
+    }
+
+    .btn-submit:hover {
+        background-color: #45a049;
+    }
+
+    .form-control {
+        margin-bottom: 20px;
+    }
+
+    .cart-link {
+        height: 100%;
+        display: inline-block;
     }
 
     .step-item {
@@ -142,7 +270,6 @@
         background-color: #5a6268;
     }
 </style>
-
 <div class="container my-5">
     <div class="row mb-4">
         <!-- Stepper -->

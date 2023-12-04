@@ -34,7 +34,6 @@ INSTALLED_APPS = [
     'home.apps.HomeConfig',
     'catalogo.apps.CatalogoConfig',
     'compras.apps.ComprasConfig',
-    'dashboard_marca.apps.DashboardMarcaConfig',
     'ingredientes_materiales.apps.IngredientesMaterialesConfig',
     'soporte.apps.SoporteConfig',
     'usuario.apps.UsuarioConfig',

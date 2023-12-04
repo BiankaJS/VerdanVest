@@ -4,14 +4,14 @@
 <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
 {% endblock %}
 {% block content %}
+{% if products %}
 <h2 class="text-center-title">Bags</h2>
-
+{% endif %}
 <a class="btn btn-primary float-end" data-bs-toggle="offcanvas" href="#offcanvasExample" role="button"
     aria-controls="offcanvasExample" style="background-color: #829778;" style="margin-left: 50px;">
     Search
+    <img src="{% static 'img/filter.png' %}" style="width: 8%;">
 </a>
-
-
 <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
     <div class="offcanvas-header">
         <h5 class="offcanvas-title" id="offcanvasExampleLabel">Search by</h5>
@@ -20,22 +20,27 @@
     <div class="offcanvas-body">
         <div class="dropdown mt-3">
             <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown">
-                Brand
+                Category
             </button>
             <ul class="dropdown-menu">
-                <li><a class="dropdown-item" href="#">Action</a></li>
-                <li><a class="dropdown-item" href="#">Another action</a></li>
-                <li><a class="dropdown-item" href="#">Something else here</a></li>
+                {% if categories %}
+                {% for category in categories %}
+                <li><a class="dropdown-item" href="{% url 'catalog:Catalog_Id' category.id %}">{{category.nombre}}</a>
+                </li>
+                {% endfor%}
+                {% endif%}
             </ul>
         </div>
         <div class="dropdown mt-3">
             <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown">
-                Category
+                Brand
             </button>
             <ul class="dropdown-menu">
-                <li><a class="dropdown-item" href="#">Action</a></li>
-                <li><a class="dropdown-item" href="#">Another action</a></li>
-                <li><a class="dropdown-item" href="#">Something else here</a></li>
+                {% if brandies %}
+                {% for brand in brandies %}
+                <li><a class="dropdown-item" href="#">{{brand.nombre}}</a></li>
+                {% endfor%}
+                {% endif%}
             </ul>
         </div>
 
@@ -44,9 +49,11 @@
                 Ingredient
             </button>
             <ul class="dropdown-menu">
-                <li><a class="dropdown-item" href="#">Action</a></li>
-                <li><a class="dropdown-item" href="#">Another action</a></li>
-                <li><a class="dropdown-item" href="#">Something else here</a></li>
+                {% if ingredients %}
+                {% for ingredient in ingredients %}
+                <li><a class="dropdown-item" href="#">{{ingredient.nombre}}</a></li>
+                {% endfor%}
+                {% endif%}
             </ul>
         </div>
         <div class="dropdown mt-3">
@@ -54,52 +61,36 @@
                 Material
             </button>
             <ul class="dropdown-menu">
-                <li><a class="dropdown-item" href="#">Action</a></li>
-                <li><a class="dropdown-item" href="#">Another action</a></li>
-                <li><a class="dropdown-item" href="#">Something else here</a></li>
+                {% if materials %}
+                {% for material in materials %}
+                <li><a class="dropdown-item" href="#">{{material.nombre}}</a></li>
+                {% endfor %}
+                {% endif %}
             </ul>
         </div>
     </div>
 </div>
 
-
 <div class="container mt-5">
+    {% if products %}
     <div class="row justify-content-center">
-        <!-- Primer Producto -->
+        {% for product in products %}
         <div class="col-md-4">
             <div class="card mx-auto" style="width: 18rem;">
-                <img src="{% static 'img/catalog1.webp' %}" class="card-img-top" alt="Producto 1">
+                <img src="{{product.urlImagen}}" class="card-img-top" alt="Producto 1">
                 <div class="card-body">
-                    <h5 class="card-title">Versace</h5>
-                    <p class="card-text">USD $20,000</p>
+                    <a href="{% url 'catalog:ProductDetail' product.id %}">
+                        <h5 class="card-title"><strong>{{product.nombre}}</strong></h5>
+                    </a>
+                    <p class="card-text">USD {{product.precio}}</p>
                 </div>
             </div>
         </div>
-
-        <!-- Segundo Producto -->
-        <div class="col-md-4">
-            <div class="card mx-auto" style="width: 18rem;">
-                <img src="{% static 'img/catalog2.webp' %}" class="card-img-top" alt="Producto 2">
-                <div class="card-body">
-                    <h5 class="card-title">Sentint</h5>
-                    <p class="card-text">USD $25,000</p>
-                </div>
-            </div>
-        </div>
-
-        <!-- Tercer Producto -->
-        <div class="col-md-4">
-            <div class="card mx-auto" style="width: 18rem;">
-                <img src="{% static 'img/catalog3.webp' %}" class="card-img-top" alt="Producto 3">
-                <div class="card-body">
-                    <h5 class="card-title">Chanel</h5>
-                    <p class="card-text">USD $30,000</p>
-                </div>
-            </div>
-        </div>
-
-
+        {% endfor %}
     </div>
+    {% else %}
+    <h2><strong>No results</strong></h2>
+    {% endif%}
 </div>
 
 
@@ -133,6 +124,18 @@
     }
 </script>
 <style>
+    a.nav-link {
+        color: black;
+        font-size: 16px;
+        text-decoration: none;
+    }
+
+    a.nav-link:hover {
+        text-decoration: none;
+        color: #45a049;
+        font: bold;
+    }
+
     .text-center-title {
         text-align: center;
         margin-top: 20px;
@@ -171,6 +174,10 @@
     .offcanvas-header {
         border-bottom: 1px solid #ccc;
     }
-</style>
 
+    a {
+        text-decoration: none;
+        color: black;
+    }
+</style>
 {% endblock %}

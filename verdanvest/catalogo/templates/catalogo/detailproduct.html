@@ -2,16 +2,16 @@
 {% load static %}
 {% block content %}
 <div class="container my-4">
-  <!-- Product Information -->
+  {% if product %}
   <div class="row product-info">
     <div class="col-md-5">
       <!-- Image placeholder -->
-      <img src="{% static 'img/jabonexfoliante.webp' %}" class="img-fluid" alt="Product">
+      <img src="{{ product.urlImagen }}" class="img-fluid" alt="Product">
     </div>
     <div class="col-md-7">
-      <h3>EXFOLIATING BAR SOAP</h3>
-      <p class="brand">BRUSHBOO</p>
-      <p class="price">USD $15.00</p>
+      <h3>{{product.nombre}}</h3>
+      <p class="brand">{{product.marca.nombre}}</p>
+      <p class="price">USD ${{product.precio}}</p>
       <div class="stepper">
         <label for="quantity">Quantity:</label>
         <input type="number" id="quantity" name="quantity" min="1" value="1">
@@ -19,11 +19,11 @@
       <button type="submit" class="btn btn-submit">ADD TO CAR</button>
       <div class="title">¡CONSIGUE UNA PIEL RADIANTE!</div>
       <p class="description">
-        A solid exfoliating soap composed of lime, calendula oil,
-        volcanic stone and coal. Ideal for you to use while showering.
-        An exquisite combo and skin... resplendent!
+        {{product.descripcion}}
       </p>
-      <div class="title">WHAT IS IT MADE OF?</div>
+
+
+      <!-- <div class="title">WHAT IS IT MADE OF?</div>
       <div class="materials">
         <div class="material-item" onclick="toggleMaterial('lima')">
           <p>Lima</p>
@@ -32,18 +32,12 @@
         <div class="material-details" id="lima-details">
           Detail about "Lima".
         </div>
-        <div class="material-item" onclick="toggleMaterial('material2')">
-          <p>Aceite de caléndula</p>
-          <span>+</span>
-        </div>
-        <div class="material-details" id="material2-details">
-          Detail about "Aceite de caléndula".
-        </div>
-        <!-- Repite esta estructura para otros materiales -->
-      </div>
+      </div> -->
+
+
     </div>
   </div>
-
+  {% endif %}
   <!-- Highly recommended products -->
   <div class="recommended-products">
     <h3 class="my-4">Highly recommended!</h3>
@@ -69,7 +63,7 @@
       </div>
       <div class="col-md-3">
         <div class="card h-100">
-          <img src="{% static 'img/toothbrush.webp' %}" class="card-img-top" alt="...">
+          <img src="{% static 'img/toothbrush.jpg' %}" class="card-img-top" alt="...">
           <div class="card-body">
             <p class="card-text">Tootbrush</p>
             <p class="card-text">$24.00 USD</p>
@@ -135,14 +129,16 @@
     margin: 0 10px;
   }
 
-  .nav-link {
+  a.nav-link {
     color: black;
     font-size: 16px;
     text-decoration: none;
   }
 
-  .nav-link:hover {
-    text-decoration: underline;
+  a.nav-link:hover {
+    text-decoration: none;
+    color: #45a049;
+    font: bold;
   }
 
   .overlay-word {

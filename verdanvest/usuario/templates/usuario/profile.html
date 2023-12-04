@@ -1,345 +1,269 @@
+{% extends 'base.html' %}
 {% load static %}
+{% block style %}
+<link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+{% endblock %}
+{% block content %}
+<div style="display: flex;">
 
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-    <title>Product Page - VERDANVEST</title>
-    <script>
-        // Esta función se ejecutará cuando el DOM esté completamente cargado
-        document.addEventListener('DOMContentLoaded', function () {
-            // Llamamos a cambiarContenido con 'personal' como argumento al cargar la página
-            cambiarContenido('personal');
-        });
-
-        function cambiarContenido(seccion) {
-            // Oculta todos los contenidos
-            document.getElementById('accountContent').style.display = 'none';
-            document.getElementById('emailContent').style.display = 'none';
-            document.getElementById('personalContent').style.display = 'none';
-            document.getElementById('addressContent').style.display = 'none';
-            document.getElementById('shoppingContent').style.display = 'none';
-
-            // Muestra el contenido según la sección seleccionada
-            if (seccion === 'personal') {
-                document.getElementById('accountContent').style.display = 'block';
-                document.getElementById('emailContent').style.display = 'block';
-                document.getElementById('personalContent').style.display = 'block';
-                document.getElementById('addressContent').style.display = 'block';
-            } else if (seccion === 'shopping') {
-                document.getElementById('shoppingContent').style.display = 'block';
-            }
-        }
-    </script>
-
-
-
-
-    <style>
-        body {
-            background-color: #f4f4f4;
-            margin: 0;
-            font-family: Arial, sans-serif;
-            display: flex;
-            flex-direction: column;
-            min-height: 100vh;
-        }
-
-        .navbar {
-            background-color: #f4f4f4;
-            padding-top: 1rem;
-            padding-bottom: 0.5rem;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            border-bottom: 1px solid #ccc;
-            position: relative;
-        }
-
-        .navbar-brand {
-            font-size: 24px;
-            font-weight: bold;
-            margin-bottom: 0.5rem;
-        }
-
-        .nav {
-            width: 100%;
-            justify-content: center;
-            padding-left: 0;
-        }
-
-        .nav-item {
-            display: inline-block;
-            margin: 0 10px;
-        }
-
-        .nav-link {
-            color: black;
-            font-size: 16px;
-            text-decoration: none;
-        }
-
-        .nav-link:hover {
-            text-decoration: underline;
-        }
-
-        .overlay-word {
-            position: absolute;
-            top: 0;
-            right: 0;
-            color: white;
-            padding: 5px;
-            margin: 5px;
-        }
-
-        .search-cart-login {
-            display: flex;
-            align-items: center;
-            height: 40px;
-            /* Ajusta la altura según tus necesidades */
-        }
-
-        .login-link,
-        .search-bar,
-        .cart-icon {
-            margin-left: 10px;
-            margin-right: 5px;
-            height: 100%;
-            /* Ajusta la altura según tus necesidades */
-        }
-
-        .login-link {
-            font-size: 14px;
-            /* Ajusta el tamaño del texto según tus necesidades */
-        }
-
-        .search-bar {
-            border: none;
-            padding: 5px;
-            border-radius: 3px;
-        }
-
-        .cart-icon,
-        .login-link {
-            color: black;
-            cursor: pointer;
-        }
-
-        .cart-icon img {
-            height: 100%;
-            /* Ajusta la altura según tus necesidades */
-        }
-
-        .footer {
-            background-color: #333333;
-            color: white;
-            padding: 20px 0;
-            width: 100%;
-            text-align: center;
-        }
-
-        .cart-link {
-            height: 100%;
-            display: inline-block;
-        }
-
-
-
-        #personalinfo {
-            display: flex;
-            flex-direction: row;
-            align-items: center;
-        }
-
-        #personalinfo p {
-            font-weight: bold;
-            margin-bottom: 5px;
-            margin-right: 10px;
-            size: 20px;
-        }
-
-        #personalinfo input {
-            width: 150px;
-            margin-bottom: 10px;
-            border: 1px solid #ccc;
-            padding: 5px;
-        }
-
-        #personalinfo h4 {
-            margin-right: 10px;
-        }
-
-        .line {
-            border-top: 1px solid #000;
-            margin-bottom: 20px;
-            margin-right: 20px;
-        }
-    </style>
-</head>
-
-<body>
-
-    <nav class="navbar">
-        <a class="navbar-brand" href="#">VERDANVEST</a>
-        <div class="nav justify-content-center">
-            <a class="nav-link active" href="#">HOME</a>
-            <a class="nav-link" href="#">SHOP</a>
-            <a class="nav-link" href="#">ABOUT</a>
-        </div>
-        <div class="overlay-word search-cart-login">
-            <!-- <a href="#" class="login-link">LOG IN/SIGN UP</a> -->
-            <input class="search-bar" type="text" placeholder="Search">
-            <a href="https://umusicstore.com.mx/collections/taylor-swift-fearless-taylors-version" class="cart-link">
-                <img src="{% static 'bolsacompra.png' %}" alt="Bolsa de Compra" class="cart-icon"></img>
-            </a>
-            <a href="tu_link_para_perfil" class="cart-link">
-                <img src="{% static 'perfil.png' %}" alt="Perfil" class="cart-icon"></img>
-            </a>
-        </div>
-    </nav>
-
-    <div style="display: flex;">
-
-        <!-- Columna 3 -->
-        <div style="flex: 3; padding: 10px; ">
-            <h2><strong>HI Jaramillo</strong></h2>
-            <p><a href="#" onclick="cambiarContenido('personal')">Personal Information</a></p>
-            <p> <a href="#" onclick="cambiarContenido('shopping')">My shopping</a></p>
-
-        </div>
-
-        <!-- Columna 7 -->
-        <div style="flex: 7; padding: 10px; position: relative;">
-            <!-- Contenido de la cuenta (vista predeterminada) -->
-            <div id='accountContent' style="margin-bottom: 20px;">
-                <p style="font-weight: bold; margin-bottom: 5px; margin-right: 10px; font-size: large;">Access your
-                    account</p>
-                <div style="display: flex; align-items: flex-end;">
-                    <input type="password" placeholder="Change Password"
-                        style="border: none; border-bottom: 1px solid #ccc; background: none; padding: 5px; outline: none; margin-left: auto;">
-                    <div style="margin-left: 10px; cursor: pointer;">
-                        <img src="{% static 'img/editar.png' %}" alt="Editar" style="width: 20px; height: 20px;">
-                    </div>
-                </div>
-                <h6 style="margin-top: 10px; margin-bottom: 10px;">Password</h6>
-                <p>******</p>
-                <div class="line" style="width: 100%; border: 1px solid #ccc;"></div>
-            </div>
-
-
-            <!-- Sección "Email" -->
-            <div id="emailContent">
-                <p style="font-weight: bold; margin-bottom: 5px; margin-right: 10px; font-size: large;">Email</p>
-                <div style="display: flex; align-items: flex-end;">
-                    <input type="password" placeholder="Change Email"
-                        style="border: none; border-bottom: 1px solid #ccc; background: none; padding: 5px; outline: none; margin-left: auto;">
-                    <div style="margin-left: 10px; cursor: pointer;">
-                        <img src="{% static 'img/editar.png' %}" alt="Editar" style="width: 20px; height: 20px;">
-                    </div>
-                </div>
-                <h6 style="margin-top: 10px; margin-bottom: 10px;">Jaramillo@gmail.com</h6>
-                <div class="line" style="width: 100%; border: 1px solid #ccc;"></div>
-            </div>
-
-
-            <div id="personalContent">
-                <p style="font-weight: bold; margin-bottom: 5px; margin-right: 10px; font-size: large;">Personal
-                    Information
-                </p>
-                <div style="display: flex; align-items: flex-end;">
-                    <input type="password" placeholder="Edit information"
-                        style="border: none; border-bottom: 1px solid #ccc; background: none; padding: 5px; outline: none; margin-left: auto;">
-                    <div style="margin-left: 10px; cursor: pointer;">
-                        <img src="{% static 'img/editar.png' %}" alt="Editar" style="width: 20px; height: 20px;">
-                    </div>
-                </div>
-                <h6 style="margin-top: 10px; margin-bottom: 10px;">Name: Jaramillo</h6>
-                <h6 style="margin-top: 10px; margin-bottom: 10px;">Lastname: Jaramillo</h6>
-                <div class="line" style="width: 100%; border: 1px solid #ccc;"></div>
-            </div>
-
-            <div id="addressContent">
-                <p style="font-weight: bold; margin-bottom: 5px; margin-right: 10px; font-size: large;">My address</p>
-                <div style="display: flex; align-items: flex-end;">
-                    <input type="password" placeholder="Add"
-                        style="border: none; border-bottom: 1px solid #ccc; background: none; padding: 5px; outline: none; margin-left: auto;">
-                    <div style="margin-left: 10px; cursor: pointer;">
-                        <img src="{% static 'img/editar.png' %}" alt="Editar" style="width: 20px; height: 20px;">
-                    </div>
-                </div>
-                <p style="font-weight: bold; margin-bottom: 5px; margin-right: 10px; font-size:medium;;">Add new address
-                </p>
-
-                <h6 style="margin-top: 10px; margin-bottom: 10px;">No data</h6>
-                <div class="line" style="width: 100%; border: 1px solid #ccc;"></div>
-            </div>
-
-            <div id="shoppingContent" style="border: 1px solid #ccc; padding: 10px; margin-bottom: 20px;">
-
-                <!-- Entregado en inglés en negrita -->
-                <p style="font-weight: bold;">Delivered</p>
-                <!-- Imágenes pegadas a la derecha -->
-                <div style="display: flex; justify-content: flex-end; margin-bottom: 10px;">
-                    <img src="{% static 'img/catalog4.webp' %}" alt="Imagen 1"
-                        style="width: 200px; height: 200px; margin-right: 5px;">
-                    <img src="{% static 'img/catalog3.webp'%}" alt="Imagen 2"
-                        style="width: 200px; height: 200px; margin-right: 5px;">
-                    <img src="{% static 'img/catalog6.webp' %}" alt="Imagen 3" style="width: 200px; height: 200px;">
-                </div>
-
-                <!-- Lo recibiste en inglés en tono gris -->
-                <p style="color: #888;">You received</p>
-
-                <!-- Cantidad en USD en negrita -->
-                <p style="font-weight: bold;">Amount: USD 1000</p>
-            </div>
-        </div>
+    <!-- Columna 3 -->
+    <div style="flex: 3; padding: 10px; ">
+        <h2><strong>Hi Jaramillo</strong></h2>
+        <p><a href="#" onclick="cambiarContenido('personal')">Personal Information</a></p>
+        <p> <a href="#" onclick="cambiarContenido('shopping')">My shopping</a></p>
 
     </div>
 
-
-
-
-
-
-    <footer class="footer">
-        <div class="container text-center">
-            <span>JOIN OUR COMMUNITY</span>
-            <div>By subscribing you agree to our Privacy Policy, and Terms and Conditions.</div>
-            <form class="form-inline justify-content-center">
-                <input type="email" class="form-control" placeholder="Your email">
-                <button type="submit" class="btn btn-secondary">Subscribe</button>
-            </form>
-            <div class="row mt-4">
-                <div class="col">
-                    <div>COLLECTIONS</div>
-                    <div>Zero</div>
-                    <div>Loewe</div>
-                </div>
-                <div class="col">
-                    <div>ABOUT</div>
-                    <div>Materials</div>
-                    <div>Sustainability</div>
-                </div>
-                <div class="col">
-                    <div>CONTACT US</div>
-                    <div>Avenida Universidad 602, Lomas del Campestre, 37150 León, Gto.</div>
-                    <div>+52 477 192 3212</div>
-                </div>
-                <div class="col">
-                    <div>FOLLOW US</div>
-                    <!-- Social media icons here -->
+    <!-- Columna 7 -->
+    <div style="flex: 7; padding: 10px; position: relative;">
+        <!-- Contenido de la cuenta (vista predeterminada) -->
+        <div id='accountContent' style="margin-bottom: 20px;">
+            <p style="font-weight: bold; margin-bottom: 5px; margin-right: 10px; font-size: large;">Access your
+                account</p>
+            <div style="display: flex; align-items: flex-end;">
+                <input type="password" placeholder="Change Password"
+                    style="border: none; border-bottom: 1px solid #ccc; background: none; padding: 5px; outline: none; margin-left: auto;">
+                <div style="margin-left: 10px; cursor: pointer;">
+                    <img src="{% static 'img/editar.png' %}" alt="Editar" style="width: 20px; height: 20px;">
                 </div>
             </div>
+            <h6 style="margin-top: 10px; margin-bottom: 10px;">Password</h6>
+            <p>******</p>
+            <div class="line" style="width: 100%; border: 1px solid #ccc;"></div>
         </div>
-    </footer>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 
-</body>
+        <!-- Sección "Email" -->
+        <div id="emailContent">
+            <p style="font-weight: bold; margin-bottom: 5px; margin-right: 10px; font-size: large;">Email</p>
+            <div style="display: flex; align-items: flex-end;">
+                <input type="password" placeholder="Change Email"
+                    style="border: none; border-bottom: 1px solid #ccc; background: none; padding: 5px; outline: none; margin-left: auto;">
+                <div style="margin-left: 10px; cursor: pointer;">
+                    <img src="{% static 'img/editar.png' %}" alt="Editar" style="width: 20px; height: 20px;">
+                </div>
+            </div>
+            <h6 style="margin-top: 10px; margin-bottom: 10px;">Jaramillo@gmail.com</h6>
+            <div class="line" style="width: 100%; border: 1px solid #ccc;"></div>
+        </div>
 
-</html>
+
+        <div id="personalContent">
+            <p style="font-weight: bold; margin-bottom: 5px; margin-right: 10px; font-size: large;">Personal
+                Information
+            </p>
+            <div style="display: flex; align-items: flex-end;">
+                <input type="password" placeholder="Edit information"
+                    style="border: none; border-bottom: 1px solid #ccc; background: none; padding: 5px; outline: none; margin-left: auto;">
+                <div style="margin-left: 10px; cursor: pointer;">
+                    <img src="{% static 'img/editar.png' %}" alt="Editar" style="width: 20px; height: 20px;">
+                </div>
+            </div>
+            <h6 style="margin-top: 10px; margin-bottom: 10px;">Name: Jaramillo</h6>
+            <h6 style="margin-top: 10px; margin-bottom: 10px;">Lastname: Jaramillo</h6>
+            <div class="line" style="width: 100%; border: 1px solid #ccc;"></div>
+        </div>
+
+        <div id="addressContent">
+            <p style="font-weight: bold; margin-bottom: 5px; margin-right: 10px; font-size: large;">My address</p>
+            <div style="display: flex; align-items: flex-end;">
+                <input type="password" placeholder="Add"
+                    style="border: none; border-bottom: 1px solid #ccc; background: none; padding: 5px; outline: none; margin-left: auto;">
+                <div style="margin-left: 10px; cursor: pointer;">
+                    <img src="{% static 'img/editar.png' %}" alt="Editar" style="width: 20px; height: 20px;">
+                </div>
+            </div>
+            <p style="font-weight: bold; margin-bottom: 5px; margin-right: 10px; font-size:medium;;">Add new address
+            </p>
+
+            <h6 style="margin-top: 10px; margin-bottom: 10px;">No data</h6>
+            <div class="line" style="width: 100%; border: 1px solid #ccc;"></div>
+        </div>
+
+        <div id="shoppingContent" style="border: 1px solid #ccc; padding: 10px; margin-bottom: 20px;">
+
+            <!-- Entregado en inglés en negrita -->
+            <p style="font-weight: bold;">Delivered</p>
+            <!-- Imágenes pegadas a la derecha -->
+            <div style="display: flex; justify-content: flex-end; margin-bottom: 10px;">
+                <img src="{% static 'img/catalog4.webp' %}" alt="Imagen 1"
+                    style="width: 200px; height: 200px; margin-right: 5px;">
+                <img src="{% static 'img/catalog3.webp'%}" alt="Imagen 2"
+                    style="width: 200px; height: 200px; margin-right: 5px;">
+                <img src="{% static 'img/catalog6.webp' %}" alt="Imagen 3" style="width: 200px; height: 200px;">
+            </div>
+
+            <!-- Lo recibiste en inglés en tono gris -->
+            <p style="color: #888;">You received</p>
+
+            <!-- Cantidad en USD en negrita -->
+            <p style="font-weight: bold;">Amount: USD 1000</p>
+        </div>
+    </div>
+</div>
+<script>
+    // Esta función se ejecutará cuando el DOM esté completamente cargado
+    document.addEventListener('DOMContentLoaded', function () {
+        // Llamamos a cambiarContenido con 'personal' como argumento al cargar la página
+        cambiarContenido('personal');
+    });
+
+    function cambiarContenido(seccion) {
+        // Oculta todos los contenidos
+        document.getElementById('accountContent').style.display = 'none';
+        document.getElementById('emailContent').style.display = 'none';
+        document.getElementById('personalContent').style.display = 'none';
+        document.getElementById('addressContent').style.display = 'none';
+        document.getElementById('shoppingContent').style.display = 'none';
+
+        // Muestra el contenido según la sección seleccionada
+        if (seccion === 'personal') {
+            document.getElementById('accountContent').style.display = 'block';
+            document.getElementById('emailContent').style.display = 'block';
+            document.getElementById('personalContent').style.display = 'block';
+            document.getElementById('addressContent').style.display = 'block';
+        } else if (seccion === 'shopping') {
+            document.getElementById('shoppingContent').style.display = 'block';
+        }
+    }
+</script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<style>
+    body {
+        background-color: #f4f4f4;
+        margin: 0;
+        font-family: Arial, sans-serif;
+        display: flex;
+        flex-direction: column;
+        min-height: 100vh;
+    }
+
+    .navbar {
+        background-color: #f4f4f4;
+        padding-top: 1rem;
+        padding-bottom: 0.5rem;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        border-bottom: 1px solid #ccc;
+        position: relative;
+    }
+
+    .navbar-brand {
+        font-size: 24px;
+        font-weight: bold;
+        margin-bottom: 0.5rem;
+    }
+
+    .nav {
+        width: 100%;
+        justify-content: center;
+        padding-left: 0;
+    }
+
+    .nav-item {
+        display: inline-block;
+        margin: 0 10px;
+    }
+
+    .nav-link {
+        color: black;
+        font-size: 16px;
+        text-decoration: none;
+    }
+
+    .nav-link:hover {
+        text-decoration: underline;
+    }
+
+    .overlay-word {
+        position: absolute;
+        top: 0;
+        right: 0;
+        color: white;
+        padding: 5px;
+        margin: 5px;
+    }
+
+    .search-cart-login {
+        display: flex;
+        align-items: center;
+        height: 40px;
+        /* Ajusta la altura según tus necesidades */
+    }
+
+    .login-link,
+    .search-bar,
+    .cart-icon {
+        margin-left: 10px;
+        margin-right: 5px;
+        height: 100%;
+        /* Ajusta la altura según tus necesidades */
+    }
+
+    .login-link {
+        font-size: 14px;
+        /* Ajusta el tamaño del texto según tus necesidades */
+    }
+
+    .search-bar {
+        border: none;
+        padding: 5px;
+        border-radius: 3px;
+    }
+
+    .cart-icon,
+    .login-link {
+        color: black;
+        cursor: pointer;
+    }
+
+    .cart-icon img {
+        height: 100%;
+        /* Ajusta la altura según tus necesidades */
+    }
+
+    .footer {
+        background-color: #333333;
+        color: white;
+        padding: 20px 0;
+        width: 100%;
+        text-align: center;
+    }
+
+    .cart-link {
+        height: 100%;
+        display: inline-block;
+    }
+
+    #personalinfo {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+    }
+
+    #personalinfo p {
+        font-weight: bold;
+        margin-bottom: 5px;
+        margin-right: 10px;
+        size: 20px;
+    }
+
+    #personalinfo input {
+        width: 150px;
+        margin-bottom: 10px;
+        border: 1px solid #ccc;
+        padding: 5px;
+    }
+
+    #personalinfo h4 {
+        margin-right: 10px;
+    }
+
+    .line {
+        border-top: 1px solid #000;
+        margin-bottom: 20px;
+        margin-right: 20px;
+    }
+</style>
+{% endblock %}

@@ -4,20 +4,15 @@
 <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
 {% endblock %}
 {% block content %}
+{% if user %}
 <div style="display: flex;">
-
-    <!-- Columna 3 -->
     <div style="flex: 3; padding: 10px; ">
-        <h2><strong>Hi Jaramillo</strong></h2>
+        <h2><strong>Hi {{user.first_name}}</strong></h2>
         <p><a href="#" onclick="cambiarContenido('personal')">Personal Information</a></p>
         <p> <a href="#" onclick="cambiarContenido('shopping')">My shopping</a></p>
         <p><a href="{% url 'auth:logout' %}"><strong>Logout</strong></a></p>
-
     </div>
-
-    <!-- Columna 7 -->
     <div style="flex: 7; padding: 10px; position: relative;">
-        <!-- Contenido de la cuenta (vista predeterminada) -->
         <div id='accountContent' style="margin-bottom: 20px;">
             <p style="font-weight: bold; margin-bottom: 5px; margin-right: 10px; font-size: large;">Access your
                 account</p>
@@ -29,12 +24,10 @@
                 </div>
             </div>
             <h6 style="margin-top: 10px; margin-bottom: 10px;">Password</h6>
-            <p>******</p>
+            <p><strong>{{user.password}}</strong></p>
             <div class="line" style="width: 100%; border: 1px solid #ccc;"></div>
         </div>
 
-
-        <!-- Sección "Email" -->
         <div id="emailContent">
             <p style="font-weight: bold; margin-bottom: 5px; margin-right: 10px; font-size: large;">Email</p>
             <div style="display: flex; align-items: flex-end;">
@@ -44,7 +37,7 @@
                     <img src="{% static 'img/editar.png' %}" alt="Editar" style="width: 20px; height: 20px;">
                 </div>
             </div>
-            <h6 style="margin-top: 10px; margin-bottom: 10px;">Jaramillo@gmail.com</h6>
+            <h6 style="margin-top: 10px; margin-bottom: 10px;">{{user.email}}</h6>
             <div class="line" style="width: 100%; border: 1px solid #ccc;"></div>
         </div>
 
@@ -60,8 +53,8 @@
                     <img src="{% static 'img/editar.png' %}" alt="Editar" style="width: 20px; height: 20px;">
                 </div>
             </div>
-            <h6 style="margin-top: 10px; margin-bottom: 10px;">Name: Jaramillo</h6>
-            <h6 style="margin-top: 10px; margin-bottom: 10px;">Lastname: Jaramillo</h6>
+            <h6 style="margin-top: 10px; margin-bottom: 10px;">Name: {{user.first_name}}</h6>
+            <h6 style="margin-top: 10px; margin-bottom: 10px;">Lastname: {{user.last_name}}</h6>
             <div class="line" style="width: 100%; border: 1px solid #ccc;"></div>
         </div>
 
@@ -102,6 +95,7 @@
         </div>
     </div>
 </div>
+{% endif %}
 <script>
     // Esta función se ejecutará cuando el DOM esté completamente cargado
     document.addEventListener('DOMContentLoaded', function () {
@@ -167,14 +161,16 @@
         margin: 0 10px;
     }
 
-    .nav-link {
+    a.nav-link {
         color: black;
         font-size: 16px;
         text-decoration: none;
     }
 
-    .nav-link:hover {
-        text-decoration: underline;
+    a.nav-link:hover {
+        text-decoration: none;
+        color: #45a049;
+        font: bold;
     }
 
     .overlay-word {
@@ -267,7 +263,7 @@
         margin-right: 20px;
     }
 
-    a{
+    a {
         text-decoration: none;
         color: black;
     }

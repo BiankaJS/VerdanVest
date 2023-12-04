@@ -18,8 +18,7 @@ def login_view(request):
                 error_message = "Invalid email or password. Please try again."
                 return render(request, 'usuario/login.html', {'error_message': error_message})
         return render(request, 'usuario/login.html')
-    except Exception as e:
-        print(f"Error en el login: {e}")   
+    except Exception: 
         return render(request, 'usuario/login.html')
 
 def register_view(request):
@@ -45,7 +44,11 @@ def register_view(request):
 
 @login_required
 def profile_view(request):
-    return render(request, 'usuario/profile.html')
+    user = request.user
+    context = {
+        'user': user
+    }
+    return render(request, 'usuario/profile.html', context)
 
 
 def logout_view(request):

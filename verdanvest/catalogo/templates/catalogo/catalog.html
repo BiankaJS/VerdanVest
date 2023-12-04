@@ -5,6 +5,64 @@
 {% endblock %}
 {% block content %}
 <h2 class="text-center-title">Bags</h2>
+
+<a class="btn btn-primary float-end" data-bs-toggle="offcanvas" href="#offcanvasExample" role="button"
+    aria-controls="offcanvasExample" style="background-color: #829778;" style="margin-left: 50px;">
+    Search
+</a>
+
+
+<div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
+    <div class="offcanvas-header">
+        <h5 class="offcanvas-title" id="offcanvasExampleLabel">Search by</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+    </div>
+    <div class="offcanvas-body">
+        <div class="dropdown mt-3">
+            <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown">
+                Brand
+            </button>
+            <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="#">Action</a></li>
+                <li><a class="dropdown-item" href="#">Another action</a></li>
+                <li><a class="dropdown-item" href="#">Something else here</a></li>
+            </ul>
+        </div>
+        <div class="dropdown mt-3">
+            <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown">
+                Category
+            </button>
+            <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="#">Action</a></li>
+                <li><a class="dropdown-item" href="#">Another action</a></li>
+                <li><a class="dropdown-item" href="#">Something else here</a></li>
+            </ul>
+        </div>
+
+        <div class="dropdown mt-3">
+            <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown">
+                Ingredient
+            </button>
+            <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="#">Action</a></li>
+                <li><a class="dropdown-item" href="#">Another action</a></li>
+                <li><a class="dropdown-item" href="#">Something else here</a></li>
+            </ul>
+        </div>
+        <div class="dropdown mt-3">
+            <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown">
+                Material
+            </button>
+            <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="#">Action</a></li>
+                <li><a class="dropdown-item" href="#">Another action</a></li>
+                <li><a class="dropdown-item" href="#">Something else here</a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+
 <div class="container mt-5">
     <div class="row justify-content-center">
         <!-- Primer Producto -->
@@ -74,5 +132,45 @@
         details.style.display = details.style.display === 'none' ? 'block' : 'none';
     }
 </script>
+<style>
+    .text-center-title {
+        text-align: center;
+        margin-top: 20px;
+        /* Puedes ajustar el valor según tus necesidades */
+    }
+
+    .brands-container {
+        background-color: #829778;
+        padding: 20px;
+        text-align: center;
+        margin: 0, 30, 0, 0;
+    }
+
+    .brand-title {
+        color: white;
+        font-size: 24px;
+        margin-bottom: 20px;
+    }
+
+    .rounded-image {
+        width: 100%;
+        border-radius: 10px;
+        margin-bottom: 10px;
+    }
+
+    /* Estilo para el botón del dropdown */
+    .dropdown button.btn-secondary {
+        background-color: transparent;
+        border: 1px solid #ccc;
+        color: #333;
+        width: 100%;
+        /* Ancho igual al 100% del menú desplegable */
+        text-align: justify;
+    }
+
+    .offcanvas-header {
+        border-bottom: 1px solid #ccc;
+    }
+</style>
 
 {% endblock %}

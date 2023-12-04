@@ -1,140 +1,12 @@
 {% extends 'base.html' %}
 {% load static %}
 {% block content %}
+
 <style>
     body {
         background-color: #f4f4f4;
         margin: 0;
         font-family: Arial, sans-serif;
-    }
-
-    .navbar {
-        background-color: #f4f4f4;
-        padding-top: 1rem;
-        padding-bottom: 0.5rem;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        border-bottom: 1px solid #ccc;
-        position: relative;
-    }
-
-    .navbar-brand {
-        font-size: 24px;
-        font-weight: bold;
-        margin-bottom: 0.5rem;
-    }
-
-    .nav {
-        width: 100%;
-        justify-content: center;
-        padding-left: 0;
-    }
-
-    .nav-item {
-        display: inline-block;
-        margin: 0 10px;
-    }
-
-    a.nav-link {
-        color: black;
-        font-size: 16px;
-        text-decoration: none;
-    }
-
-    a.nav-link:hover {
-        text-decoration: none;
-        color: #45a049;
-        font: bold;
-    }
-
-    .overlay-word {
-        position: absolute;
-        top: 0;
-        right: 0;
-        color: white;
-        padding: 5px;
-        margin: 5px;
-    }
-
-    .search-cart-login {
-        display: flex;
-        align-items: center;
-        height: 40px;
-        /* Ajusta la altura según tus necesidades */
-    }
-
-    .login-link,
-    .search-bar,
-    .cart-icon {
-        margin-left: 10px;
-        margin-right: 5px;
-        height: 100%;
-        /* Ajusta la altura según tus necesidades */
-    }
-
-    .login-link {
-        font-size: 14px;
-        /* Ajusta el tamaño del texto según tus necesidades */
-    }
-
-    .search-bar {
-        border: none;
-        padding: 5px;
-        border-radius: 3px;
-    }
-
-    .cart-icon,
-    .login-link {
-        color: black;
-        cursor: pointer;
-    }
-
-    .cart-icon img {
-        height: 100%;
-        /* Ajusta la altura según tus necesidades */
-    }
-
-    .footer {
-        background-color: #333333;
-        color: white;
-        padding: 20px 0;
-        width: 100%;
-        text-align: center;
-        position: fixed;
-        bottom: 0;
-    }
-
-    .login-container {
-        max-width: 600px;
-        margin: 20px auto;
-        background: #f4f4f4;
-        padding: 20px;
-        /* box-shadow: 0px 0px 10px rgba(0,0,0,0.1); */
-        margin-top: 50px;
-        /* Ajusta el margen superior según sea necesario */
-        margin-bottom: 120px;
-        /* Ajusta el margen inferior según sea necesario */
-    }
-
-    .btn-submit {
-        background-color: #4CAF50;
-        border: none;
-        max-width: 900px;
-        width: 100%;
-    }
-
-    .btn-submit:hover {
-        background-color: #45a049;
-    }
-
-    .form-control {
-        margin-bottom: 20px;
-    }
-
-    .cart-link {
-        height: 100%;
-        display: inline-block;
     }
 
     .step-item {
@@ -183,12 +55,12 @@
     }
 
     .card {
+        background-color: #f4f4f4;
         border: 1px solid #ccc;
         border-radius: 5px;
         padding: 10px;
         margin-bottom: 10px;
         display: flex;
-        align-items: center;
     }
 
     .shipping-option label {
@@ -218,14 +90,41 @@
     }
 
     .card img {
-        width: 100px;
+        width: 200px;
         height: auto;
         margin-right: 10px;
+        align-items: start;
     }
 
     .card-details {
+        background-color: #f4f4f4;
         display: flex;
-        flex-direction: column;
+        align-items: center;
+        /* Cambiado de 'end' a 'center' para centrar verticalmente */
+        padding: 10px;
+    }
+
+    .card-details img {
+        height: 100%;
+        /* Hace que la imagen ocupe toda la altura del contenedor */
+        max-height: 100%;
+        margin-right: 10px;
+    }
+
+    .card-details div {
+        flex: 1;
+    }
+
+    .card-details h4,
+    .card-details p {
+        margin: 0;
+        font-size: 100%;
+        /* Ajusta el tamaño del texto al 100% de la fuente original */
+    }
+
+    .card-details p:last-child {
+        margin-bottom: 10px;
+        /* Ajusta el margen inferior del último párrafo para separar del borde */
     }
 
     .card-below {
@@ -240,7 +139,7 @@
     }
 
     .summary-item {
-        background: #f8f9fa;
+        background: #f4f4f4;
         border: 1px solid #dee2e6;
         border-radius: .25rem;
         padding: 10px;
@@ -269,7 +168,55 @@
     .btn-continue:hover {
         background-color: #5a6268;
     }
+
+    .btn-addAddress {
+        background-color: #829778;
+        color: white;
+        width: 200px;
+        padding: 10px;
+        border: none;
+        border-radius: .25rem;
+        cursor: pointer;
+        margin-top: 15px;
+    }
+
+    .btn-addAddress:hover {
+        background-color: #5a6268;
+    }
+
+    .payment-logo {
+        width: 40px;
+        height: auto;
+        margin-right: 10px;
+    }
+
+    .grid-form {
+        display: grid;
+        gap: 10px;
+    }
+
+    .grid-form input {
+        width: 100%;
+        padding: 8px;
+        box-sizing: border-box;
+    }
+
+    .grid-form button {
+        background-color: #829778;
+        color: white;
+        width: 100%;
+        padding: 10px;
+        border: none;
+        border-radius: .25rem;
+        cursor: pointer;
+        margin-top: 15px;
+    }
+
+    .grid-form button:hover {
+        background-color: #5a6268;
+    }
 </style>
+
 <div class="container my-5">
     <div class="row mb-4">
         <!-- Stepper -->
@@ -277,15 +224,15 @@
             <div class="steps d-flex justify-content-between">
                 <div class="step-item active">
                     <span class="step-circle">1</span>
-                    <p class="step-title">Metodo de Envío</p>
+                    <p class="step-title">Shipping Method</p>
                 </div>
                 <div class="step-item">
                     <span class="step-circle">2</span>
-                    <p class="step-title">Dirección</p>
+                    <p class="step-title">Address</p>
                 </div>
                 <div class="step-item">
                     <span class="step-circle">3</span>
-                    <p class="step-title">Pago</p>
+                    <p class="step-title">Payment</p>
                 </div>
             </div>
         </div>
@@ -296,91 +243,221 @@
         <!-- Contenido del paso se actualizará aquí -->
     </div>
 
+    <div id="address-form-container"></div>
+
     <script>
+
+        function openAddressForm() {
+            const addressFormContainer = document.getElementById("address-form-container");
+            addressFormContainer.innerHTML = `
+                <div class="grid-form">
+                    <h4>New Address</h4>
+                    <input type="text" placeholder="Enter your address" id="new-address-input">
+                    <button onclick="saveAddress()">Save Address</button>
+                </div>
+            `;
+        }
+
+        function saveAddress() {
+            const newAddressInput = document.getElementById("new-address-input");
+            const newAddress = newAddressInput.value;
+
+            // Bianka, aqui va la parte de guardarla en la base de datos
+
+            closeAddressForm();
+        }
+
+        function closeAddressForm() {
+            const addressFormContainer = document.getElementById("address-form-container");
+            addressFormContainer.innerHTML = ""; // Clear the content
+        }
+
+
         let currentStep = 1;
+        const radioSelections = {};
 
         function nextStep() {
-            const nextStep = currentStep + 1;
-            if (nextStep <= 3) {
-                updateContent(nextStep);
-                currentStep = nextStep;
+            const currentStepContent = document.getElementById(`step-${currentStep}`);
+            const selectedRadio = currentStepContent.querySelector('input[type="radio"]:checked');
+
+            if (selectedRadio) {
+                radioSelections[currentStep] = selectedRadio.value; // Save the current selection
+                const nextStep = currentStep + 1;
+                if (nextStep <= 3) {
+                    updateContent(nextStep);
+                    currentStep = nextStep;
+                }
+            } else {
+                alert('Please select an option before continuing.');
             }
         }
 
         // Función para actualizar el contenido según el paso
         function updateContent(step) {
             const stepContent = document.getElementById("step-content");
+            const steps = document.querySelectorAll(".step-item");
+
+            // Quita la clase 'active' de todos los steps
+            steps.forEach((step) => {
+                step.classList.remove("active");
+            });
+
+            // Agrega la clase 'active' al step actual
+            steps[step - 1].classList.add("active");
+
             switch (step) {
                 case 1:
                     stepContent.innerHTML = `
-                            <div class="row">
+                        <div class="row" id="step-1">
                             <!-- Shipping Options -->
-                                <div class="col-md-7">
-                                    <div class="col-12">
-                                        <input type="radio" name="shippingMethod" value="standard"> Standard
-                                            <p>Entrega en 3-5 días hábiles - MX $65.00</p>
-                                    </div>
-                                    <div class="divider"></div> <!-- Línea divisoria -->
-                                    <div class="col-12">
-                                        <input type="radio" name="shippingMethod" value="express"> Express
-                                            <p>Entrega en 1-2 días hábiles - MX $95.00</p>
-                                    </div>
-                                    <div class="divider"></div> <!-- Línea divisoria -->
-                                    <div class="col-12 mt-3">
-                                        <input type="radio" name="shippingMethod" value="pickup"> Punto de recogida
-                                            <p>Recoge tu pedido en nuestro punto de recogida - MX $55.00</p>
-                                    </div>
-                                    <div class="divider"></div> <!-- Línea divisoria -->
+                            <div class="col-md-7">
+                                <div class="col-12">
+                                    <input type="radio" name="shippingMethod" value="standard" ${radioSelections[1] === 'standard' ? 'checked' : ''}> Standard
+                                    <p>Delivery in 3-5 business days - USD $65.00</p>
                                 </div>
-
-                                <!-- Order Summary -->
-                                <div class="col-md-5">
-                                    <div class="card">
-                                        <img src="{% static 'img/siri.png' %}" alt="Producto Image">
-                                            <div class="card-details">
-                                                <h4>Siri cream</h4>
-                                                <p>Cantidad: 1</p>
-                                                <p>Precio: MX $699.00</p>
-                                            </div>
-                                    </div>
-
-                                    <div class="summary-item">
-                                        <h4>Información adicional</h4>
-                                        <p class="summary-total">Subtotal: MX $699.00</p>
-                                        <p class="summary-total">TOTAL: MX $699.00 <small>+IVA incluido</small></p>
-                                    </div>
-                                    <button class="btn-continue" onclick="nextStep()">CONTINUAR</button>
+                                <div class="divider"></div> <!-- Divider line -->
+                                <div class="col-12">
+                                    <input type="radio" name="shippingMethod" value="express" ${radioSelections[1] === 'express' ? 'checked' : ''}> Express
+                                    <p>Delivery in 1-2 business days - USD $95.00</p>
                                 </div>
+                                <div class="divider"></div> <!-- Divider line -->
+                                <div class="col-12 mt-3">
+                                    <input type="radio" name="shippingMethod" value="pickup" ${radioSelections[1] === 'pickup' ? 'checked' : ''}> Pickup Point
+                                    <p>Pick up your order at our pickup point - USD $55.00</p>
+                                </div>
+                                <div class="divider"></div> <!-- Divider line -->
                             </div>
+
+                            <!-- Order Summary -->
+            <div class="col-md-5">
+                <div class="card">
+                    <div class="card-details d-flex"> <!-- Added 'd-flex' to use flexbox -->
+                        <img src="{% static 'img/masajeante.png' %}" alt="Product Image" class="card-image">
+                        <div>
+                            <h4>ANTI-CELLULITE MASSAGER</h4>
+                            <p>Quantity: 1</p>
+                            <p>Price: USD $699.00</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="summary-item">
+                    <h4>Additional Information</h4>
+                    <p class="summary-total">Subtotal: USD $699.00</p>
+                    <p class="summary-total">TOTAL: USD $699.00 <small>+VAT included</small></p>
+                </div>
+                <button class="btn-continue" onclick="nextStep()">${step === 3 ? 'PAY' : 'CONTINUE'}</button>
+            </div>
                             `;
                     break;
                 case 2:
                     stepContent.innerHTML = `
-                        <div class="col-12">
-                            <div class="address-option">
-                                <input type="radio" name="address" id="address1" checked>
-                                <label for="address1">Dirección 1</label>
-                                <p>Detalles de la dirección 1</p>
+                    <div class="row" id="step-2">
+                            <!-- Addresses -->
+                            <div class="col-md-7">
+                                <div class="col-12 address-option">
+                                    <input type="radio" name="address" id="address1" ${radioSelections[2] === 'address1' ? 'checked' : ''}>
+                                    <label for="address1">Address 1</label>
+                                    <p>Address 1 details</p>
+                                </div>
+                                <div class="divider"></div> <!-- Divider line -->
+                                <div class="col-12 address-option">
+                                    <input type="radio" name="address" id="address2" ${radioSelections[2] === 'address2' ? 'checked' : ''}>
+                                    <label for="address2">Address 2</label>
+                                    <p>Address 2 details</p>
+                                </div>
+                                <div class="divider"></div> <!-- Divider line -->
+                                <div class="col-12 address-option">
+                                    <input type="radio" name="address" id="address3" ${radioSelections[2] === 'address3' ? 'checked' : ''}>
+                                    <label for="address3">Address 3</label>
+                                    <p>Address 3 details</p>
+                                </div>
+                                <div class="divider"></div> <!-- Divider line -->
+                                <button class="btn-addAddress" onclick="openAddressForm()">Add Address</button>
                             </div>
-                            <div class="address-option">
-                                <input type="radio" name="address" id="address2">
-                                <label for="address2">Dirección 2</label>
-                                <p>Detalles de la dirección 2</p>
-                            </div>
-                            <div class="address-option">
-                                <input type="radio" name="address" id="address3">
-                                <label for="address3">Dirección 3</label>
-                                <p>Detalles de la dirección 3</p>
-                            </div>
+
+                                <!-- Order Summary -->
+            <div class="col-md-5">
+                <div class="card">
+                    <div class="card-details d-flex"> <!-- Added 'd-flex' to use flexbox -->
+                        <img src="{% static 'img/masajeante.png' %}" alt="Product Image" class="card-image">
+                        <div>
+                            <h4>ANTI-CELLULITE MASSAGER</h4>
+                            <p>Quantity: 1</p>
+                            <p>Price: USD $699.00</p>
                         </div>
-                        <div class="divider"></div> <!-- Línea divisoria -->
-                        <div class="col-12 mt-3">
-                            <button class="btn btn-primary" onclick="nextStep()">Siguiente</button>
+                    </div>
+                </div>
+
+                <div class="summary-item">
+                    <h4>Additional Information</h4>
+                    <p class="summary-total">Subtotal: USD $699.00</p>
+                    <p class="summary-total">TOTAL: USD $699.00 <small>+VAT included</small></p>
+                </div>
+                <button class="btn-continue" onclick="nextStep()">${step === 3 ? 'PAY' : 'CONTINUE'}</button>
+            </div>
+                            `;
+                    break;
+                case 3:
+                    stepContent.innerHTML = `
+                    <div class="row" id="step-3">
+                            <!-- Payment Method -->
+                            <div class="col-md-7">
+                                <div class="col-12 address-option">
+                                    <input type="radio" name="payment" id="payment1" ${radioSelections[3] === 'payment1' ? 'checked' : ''}>
+                                    <img class="payment-logo" src="{% static 'img/mastercard.png' %}" alt="Product Image">
+                                    <label for="payment1">Mastercard</label>
+                                </div>
+                                <div class="divider"></div> <!-- Divider line -->
+                                <div class="col-12 address-option">
+                                    <input type="radio" name="payment" id="payment2" ${radioSelections[3] === 'payment2' ? 'checked' : ''}>
+                                    <img class="payment-logo" src="{% static 'img/visa.png' %}" alt="Product Image">
+                                    <label for="payment2">Visa</label>
+                                </div>
+                                <div class="divider"></div> <!-- Divider line -->
+                                <div class="col-12 address-option">
+                                    <input type="radio" name="payment" id="payment3" ${radioSelections[3] === 'payment3' ? 'checked' : ''}>
+                                    <img class="payment-logo" src="{% static 'img/paypal.png' %}" alt="Product Image">
+                                    <label for="payment3">Paypal</label>
+                                </div>
+                                <div class="divider"></div> <!-- Divider line -->
+                                <div class="col-12 address-option">
+                                    <input type="radio" name="payment" id="payment4" ${radioSelections[3] === 'payment4' ? 'checked' : ''}>
+                                    <img class="payment-logo" src="{% static 'img/amex.png' %}" alt="Product Image">
+                                    <label for="payment4">Amex</label>
+                                </div>
+                                <div class="divider"></div> <!-- Divider line -->
+                                <div class="col-12 address-option">
+                                    <input type="radio" name="payment" id="payment5" ${radioSelections[3] === 'payment5' ? 'checked' : ''}>
+                                    <img class="payment-logo" src="{% static 'img/affinity.png' %}" alt="Product Image">
+                                    <label for="payment5">Affinity</label>
+                                </div>
+                                <div class="divider"></div> <!-- Divider line -->
+                            </div>
+
+                            <!-- Order Summary -->
+            <div class="col-md-5">
+                <div class="card">
+                    <div class="card-details d-flex"> <!-- Added 'd-flex' to use flexbox -->
+                        <img src="{% static 'img/masajeante.png' %}" alt="Product Image" class="card-image">
+                        <div>
+                            <h4>ANTI-CELLULITE MASSAGER</h4>
+                            <p>Quantity: 1</p>
+                            <p>Price: USD $699.00</p>
                         </div>
-                    `;
+                    </div>
+                </div>
+
+                <div class="summary-item">
+                    <h4>Additional Information</h4>
+                    <p class="summary-total">Subtotal: USD $699.00</p>
+                    <p class="summary-total">TOTAL: USD $699.00 <small>+VAT included</small></p>
+                </div>
+                <button class="btn-continue" onclick="nextStep()">${step === 3 ? 'PAY' : 'CONTINUE'}</button>
+            </div>
+                                                        `;
                     break;
                 // Agrega casos para los siguientes pasos aquí
-
                 default:
                     break;
             }
@@ -388,6 +465,15 @@
 
         document.addEventListener("DOMContentLoaded", function () {
             updateContent(currentStep);
+
+            const stepIcons = document.querySelectorAll(".step-item");
+
+            stepIcons.forEach((icon, index) => {
+                icon.addEventListener("click", () => {
+                    updateContent(index + 1);
+                    currentStep = index + 1;
+                });
+            });
         });
     </script>
 

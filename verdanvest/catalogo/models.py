@@ -10,6 +10,7 @@ class Marca(models.Model):
     id = models.AutoField(primary_key=True)
     nombre = models.CharField(max_length=255)
 
+
 class Producto(models.Model):
     id = models.AutoField(primary_key=True)
     nombre = models.TextField()
@@ -19,6 +20,7 @@ class Producto(models.Model):
     categoria = models.ForeignKey(Categoria, on_delete=models.CASCADE, default= 1)
     calificacion_salud = models.DecimalField(max_digits=2, decimal_places=1, null=True, blank=True) 
     urlImagen = models.TextField(null=True, blank=True)
+
 
 class Inventario(models.Model):
     producto = models.ForeignKey(Producto, on_delete=models.CASCADE)

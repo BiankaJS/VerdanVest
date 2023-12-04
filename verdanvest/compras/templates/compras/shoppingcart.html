@@ -8,43 +8,37 @@
   <!-- Sección del carrito -->
   <div class="cart-section">
     <h1 class="cart-title"><strong>Shopping Cart </strong> </h1>
-    <p class="subtotal" style="color: #888;" >Subtotal: $100.00</p>
+    {% if cart %}
+    <p class="subtotal" style="color: #888;">Subtotal: $ {{total_cart}}</p>
 
     <!-- Resumen del carrito -->
     <div class="cart-summary">
-      <p>Shopping Cart (3)</p>
+      {% with detalles_count=detail_cart|length %}
+      <p>Shopping Cart ({{detalles_count}})</p>
+      {% endwith %}
     </div>
-
-    <div class="line"></div>
-    <!-- Productos en el carrito -->
-
-
-    <!-- Productos en el carrito -->
     <div class="cart-products">
-      <!-- Producto 1 -->
+      {% for product in detail_cart %}
       <div class="product">
+        <div class="line"></div>
         <div class="product-content">
-          <img src="{% static 'img/wish1.webp' %}" alt="Product 1" style="width: 300px;height: 300px;" >
+          <img src="{{product.producto.urlImagen}}" alt="Product 1" style="width: 300px;height: 300px;">
           <div class="product-details">
-            <h4><strong> ASTRAL BIKKER</strong> </h4>
-            <h5 > $ 500.00 USD</h5>
+            <h4><strong>{{product.producto.nombre}}</strong> </h4>
+            <h5> $ {{product.producto.precio}} USD</h5>
+            <h6>Quantity: {{product.cantidad}}</h>
           </div>
         </div>
-        <div class="product-delete">
-          <!-- Agrega un icono aquí (puedes cambiar "icon.png" por la ruta correcta de tu icono) -->
-          <img src="{% static 'img/borrar.png' %}" alt="Icon" class="icon" style="width: 20px;height: 20px;">
-          <span class="delete">Delete</span>
-        </div>
+        <a href="{% url 'shopping:deleteItemCart' product.id %}">
+          <div class="product-delete">
+            <img src="{% static 'img/borrar.png' %}" alt="Icon" class="icon" style="width: 20px;height: 20px;">
+            <span class="delete"><strong>Delete</strong></span>
+          </div>
+        </a>
       </div>
-      <div class="line"></div>
-
-      <!-- Agrega más productos según sea necesario -->
+      {% endfor %}
     </div>
-
-
   </div>
-
-  <!-- Sección de métodos de pago -->
   <div class="payment-section">
     <h2 class="payment-methods">Methods of Payment</h2>
     <img src="{% static 'img/paryment.jpg' %}" alt="Payment Methods" class="payment-image">
@@ -55,6 +49,10 @@
     <p class="free-shipping">FREE RETURNS</p>
     <p class="shipping-details">20-day return guarantee</p>
   </div>
+  {% else %}
+  <p class="subtotal" style="color: #888;">Subtotal: $00.00</p>
+  <h4 style="text-align: center;">Have 0 item(s) in your shopping cart</h4>
+  {% endif %}
 </div>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 <script>
@@ -101,14 +99,16 @@
     margin: 0 10px;
   }
 
-  .nav-link {
+  a.nav-link {
     color: black;
     font-size: 16px;
     text-decoration: none;
   }
 
-  .nav-link:hover {
-    text-decoration: underline;
+  a.nav-link:hover {
+    text-decoration: none;
+    color: #45a049;
+    font: bold;
   }
 
   .overlay-word {
@@ -166,7 +166,6 @@
     text-align: center;
   }
 
-
   .checkout-container {
     display: flex;
     justify-content: space-between;
@@ -184,7 +183,6 @@
     border-radius: 10px;
     height: 400px;
     align-content: center;
-
   }
 
   .payment-section p {
@@ -192,10 +190,8 @@
 
   }
 
-
-
   .cart-title {
-    font-size:xx-large;
+    font-size: xx-large;
   }
 
   .subtotal {
@@ -216,8 +212,6 @@
     margin-bottom: 20px;
     margin-right: 40px;
   }
-
-
 
   .payment-methods {
     text-align: center;
@@ -270,8 +264,26 @@
   .product-delete {
     margin-top: 20px;
   }
+
   .delete {
     text-align: center;
   }
+
+  a {
+    text-decoration: none;
+    color: black;
+  }
 </style>
+{% if not cart %}
+<style>
+  .footer {
+    background-color: #333333;
+    color: white;
+    padding: 20px 0;
+    width: 100%;
+    text-align: center;
+    position: fixed;
+  }
+</style>
+{% endif %}
 {% endblock %}

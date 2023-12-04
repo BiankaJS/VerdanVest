@@ -5,10 +5,10 @@
 {% endblock %}
 {% block content %}
 {% if user %}
-<div style="display: flex;">
+<div style="display: flex; margin-top: 2rem;">
     <div style="flex: 3; padding: 10px; ">
         <h2><strong>Hi {{user.first_name}}</strong></h2>
-        <p><a href="#" onclick="cambiarContenido('personal')">Personal Information</a></p>
+        <p><a href="{% url 'auth:profile' %}" onclick="cambiarContenido('personal')">Personal Information</a></p>
         <p> <a href="#" onclick="cambiarContenido('shopping')">My shopping</a></p>
         <p><a href="{% url 'auth:logout' %}"><strong>Logout</strong></a></p>
     </div>
@@ -16,13 +16,6 @@
         <div id='accountContent' style="margin-bottom: 20px;">
             <p style="font-weight: bold; margin-bottom: 5px; margin-right: 10px; font-size: large;">Access your
                 account</p>
-            <div style="display: flex; align-items: flex-end;">
-                <input type="password" placeholder="Change Password"
-                    style="border: none; border-bottom: 1px solid #ccc; background: none; padding: 5px; outline: none; margin-left: auto;">
-                <div style="margin-left: 10px; cursor: pointer;">
-                    <img src="{% static 'img/editar.png' %}" alt="Editar" style="width: 20px; height: 20px;">
-                </div>
-            </div>
             <h6 style="margin-top: 10px; margin-bottom: 10px;">Password</h6>
             <p><strong>{{user.password}}</strong></p>
             <div class="line" style="width: 100%; border: 1px solid #ccc;"></div>
@@ -30,13 +23,6 @@
 
         <div id="emailContent">
             <p style="font-weight: bold; margin-bottom: 5px; margin-right: 10px; font-size: large;">Email</p>
-            <div style="display: flex; align-items: flex-end;">
-                <input type="password" placeholder="Change Email"
-                    style="border: none; border-bottom: 1px solid #ccc; background: none; padding: 5px; outline: none; margin-left: auto;">
-                <div style="margin-left: 10px; cursor: pointer;">
-                    <img src="{% static 'img/editar.png' %}" alt="Editar" style="width: 20px; height: 20px;">
-                </div>
-            </div>
             <h6 style="margin-top: 10px; margin-bottom: 10px;">{{user.email}}</h6>
             <div class="line" style="width: 100%; border: 1px solid #ccc;"></div>
         </div>
@@ -46,13 +32,6 @@
             <p style="font-weight: bold; margin-bottom: 5px; margin-right: 10px; font-size: large;">Personal
                 Information
             </p>
-            <div style="display: flex; align-items: flex-end;">
-                <input type="password" placeholder="Edit information"
-                    style="border: none; border-bottom: 1px solid #ccc; background: none; padding: 5px; outline: none; margin-left: auto;">
-                <div style="margin-left: 10px; cursor: pointer;">
-                    <img src="{% static 'img/editar.png' %}" alt="Editar" style="width: 20px; height: 20px;">
-                </div>
-            </div>
             <h6 style="margin-top: 10px; margin-bottom: 10px;">Name: {{user.first_name}}</h6>
             <h6 style="margin-top: 10px; margin-bottom: 10px;">Lastname: {{user.last_name}}</h6>
             <div class="line" style="width: 100%; border: 1px solid #ccc;"></div>
@@ -60,44 +39,52 @@
 
         <div id="addressContent">
             <p style="font-weight: bold; margin-bottom: 5px; margin-right: 10px; font-size: large;">My address</p>
-            <div style="display: flex; align-items: flex-end;">
+            <form action="{% url 'auth:address'%}" method="post">
+                {% csrf_token %}
+                
+                <div style="display: flex; align-items: flex-end;">
+                    <input type="text" name="address" placeholder="Change"
+                        style="border: none; border-bottom: 1px solid #ccc; background: none; padding: 5px; outline: none; margin-left: auto; width: 50%;">
+            
+                    <div style="margin-left: 10px; cursor: pointer;">
+                        <img src="{% static 'img/editar.png' %}" alt="Editar" style="width: 20px; height: 20px;">
+                    </div>
+            
+                    <button type="submit" style="border: none; background: none; cursor: pointer;">
+                        Submit
+                    </button>
+                </div>
+            </form>
+            
+            <!-- <div style="display: flex; align-items: flex-end;">
                 <input type="password" placeholder="Add"
                     style="border: none; border-bottom: 1px solid #ccc; background: none; padding: 5px; outline: none; margin-left: auto;">
                 <div style="margin-left: 10px; cursor: pointer;">
                     <img src="{% static 'img/editar.png' %}" alt="Editar" style="width: 20px; height: 20px;">
                 </div>
-            </div>
+            </div> -->
             <p style="font-weight: bold; margin-bottom: 5px; margin-right: 10px; font-size:medium;;">Add new address
             </p>
-
-            <h6 style="margin-top: 10px; margin-bottom: 10px;">No data</h6>
+            <h6 style="margin-top: 10px; margin-bottom: 10px;">{{user.domicilio}}</h6>
             <div class="line" style="width: 100%; border: 1px solid #ccc;"></div>
         </div>
-
         <div id="shoppingContent" style="border: 1px solid #ccc; padding: 10px; margin-bottom: 20px;">
 
-            <!-- Entregado en inglés en negrita -->
             <p style="font-weight: bold;">Delivered</p>
-            <!-- Imágenes pegadas a la derecha -->
+            {% if pedido %}
             <div style="display: flex; justify-content: flex-end; margin-bottom: 10px;">
-                <img src="{% static 'img/catalog4.webp' %}" alt="Imagen 1"
-                    style="width: 200px; height: 200px; margin-right: 5px;">
-                <img src="{% static 'img/catalog3.webp'%}" alt="Imagen 2"
-                    style="width: 200px; height: 200px; margin-right: 5px;">
-                <img src="{% static 'img/catalog6.webp' %}" alt="Imagen 3" style="width: 200px; height: 200px;">
+                {% for pedido in pedidos%}
+                <img src="{pedido.producto.urlImagen}" alt="Imagen 3" style="width: 200px; height: 200px;">
+                {% endfor %}
             </div>
-
-            <!-- Lo recibiste en inglés en tono gris -->
-            <p style="color: #888;">You received</p>
-
-            <!-- Cantidad en USD en negrita -->
+            <p style="color: #888;">You received: {{pedido.fecha_entrega_estimada}}</p>
             <p style="font-weight: bold;">Amount: USD 1000</p>
+            {% endif %}
         </div>
     </div>
 </div>
 {% endif %}
 <script>
-    // Esta función se ejecutará cuando el DOM esté completamente cargado
     document.addEventListener('DOMContentLoaded', function () {
         // Llamamos a cambiarContenido con 'personal' como argumento al cargar la página
         cambiarContenido('personal');

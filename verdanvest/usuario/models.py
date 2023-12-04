@@ -6,7 +6,7 @@ from catalogo.models import Producto
 
 class User(AbstractUser):
     role = models.IntegerField(null=True, blank=False)
-
+    domicilio = models.TextField(blank=True, null=True)
     def __str__(self):
         return self.username
 

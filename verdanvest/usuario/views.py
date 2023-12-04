@@ -1,9 +1,10 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.http import HttpResponse
 from django.utils import timezone
-from .models import User
+from usuario.models import User
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
+from compras.models import Pedido, PedidoDetalle
 
 def login_view(request):
     try:
@@ -44,13 +45,28 @@ def register_view(request):
 
 @login_required
 def profile_view(request):
-    user = request.user
-    context = {
-        'user': user
-    }
-    return render(request, 'usuario/profile.html', context)
-
+    try:
+        user = request.user
+        pedido = Pedido.objects.get(usuario_id=request.user.id)
+        pedidos = PedidoDetalle.objects.get(pedidoId=pedido.id)
+        context = {
+            'pedido': pedido,
+            'pedidos': pedidos,
+            'user': user
+        }
+        return render(request, 'usuario/profile.html', context)
+    except: 
+        return render(request, 'usuario/profile.html')
 
 def logout_view(request):
     logout(request)
     return redirect('home:Home')
+
+@login_required
+def addAddress_view(request):
+    if request.method == 'POST':
+        user = request.user
+        dto = User.objects.get(pk=user.id)
+        dto.domicilio = request.POST.get('address')
+        dto.save()
+        return redirect('auth:profile')

@@ -5,7 +5,7 @@ from django.conf import settings
 from catalogo.models import Producto
 
 class User(AbstractUser):
-    role = models.IntegerField(null=False, blank=False)
+    role = models.IntegerField(null=True, blank=False)
 
 class DjangoAdminLog(models.Model):
     action_time = models.DateTimeField()

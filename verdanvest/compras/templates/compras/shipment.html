@@ -173,78 +173,227 @@
         height: 2px;
         background-color: #ccc;
     }
+
+    .divider {
+        width: 100%;
+        height: 2px;
+        background-color: #ccc;
+        margin: 10px 0;
+    }
+
+    .card {
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        padding: 10px;
+        margin-bottom: 10px;
+    }
+
+    .shipping-option {
+        padding: 15px;
+        margin-bottom: 10px;
+        border-radius: 4px;
+        border: none;
+        /* Elimina el borde */
+    }
+
+    .shipping-option label {
+        width: 100%;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+    }
+
+    .shipping-option input[type="radio"] {
+        margin-right: 10px;
+    }
+
+    .shipping-divider {
+        width: 100%;
+        height: 2px;
+        background-color: #ccc;
+        margin: 10px 0;
+    }
+
+    .card-below {
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        padding: 10px;
+        margin-top: 10px;
+    }
+
+    .card-below p {
+        margin: 0;
+    }
+
+
+    .summary-item {
+        background: #f8f9fa;
+        border: 1px solid #dee2e6;
+        border-radius: .25rem;
+        padding: 10px;
+        margin-bottom: 10px;
+    }
+
+    .summary-item p {
+        margin-bottom: 0.5rem;
+    }
+
+    .summary-total {
+        font-weight: bold;
+    }
+
+    .btn-continue {
+        background-color: #6c757d;
+        color: white;
+        width: 100%;
+        padding: 10px;
+        border: none;
+        border-radius: .25rem;
+        cursor: pointer;
+    }
+
+    .btn-continue:hover {
+        background-color: #5a6268;
+    }
 </style>
+
 <body>
-    <div class="container mt-4">
+
+    <div class="container my-5">
+        <div class="row mb-4">
+            <!-- Stepper -->
+            <div class="col-12">
+                <div class="steps d-flex justify-content-between">
+                    <div class="step-item active">
+                        <span class="step-circle">1</span>
+                        <p class="step-title">Metodo de Envío</p>
+                    </div>
+                    <div class="step-item">
+                        <span class="step-circle">2</span>
+                        <p class="step-title">Dirección</p>
+                    </div>
+                    <div class="step-item">
+                        <span class="step-circle">3</span>
+                        <p class="step-title">Pago</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
         <div class="row">
-            <div class="col-4">
-                <div class="step-item active">
-                    <span>1</span>
-                    <p>Método de Envío</p>
+            <!-- Shipping Options -->
+            <div class="col-md-7">
+                <div class="shipping-option">
+                    <input type="radio" name="shipping" id="standard" checked>
+                    <label for="standard">Standard - Recíbelo entre viernes 10 - miércoles 15 MX $65.00</label>
+                </div>
+                <div class="shipping-divider"></div> <!-- Línea divisoria -->
+                <div class="shipping-option">
+                    <input type="radio" name="shipping" id="express">
+                    <label for="express">Express - Recíbelo entre viernes 10 - martes 14 MX $95.00</label>
+                </div>
+                <div class="shipping-divider"></div> <!-- Línea divisoria -->
+                <div class="shipping-option">
+                    <input type="radio" name="shipping" id="pickup">
+                    <label for="pickup">Punto de recogida - Recíbelo entre viernes 10 - miércoles 15 MX $55.00</label>
                 </div>
             </div>
-            <div class="col-4">
-                <div class="step-item">
-                    <span>2</span>
-                    <p>Direcciones</p>
+
+            <!-- Order Summary -->
+            <div class="col-md-5">
+                <div class="summary-item">
+                    <h4>Ver resumen</h4>
+                    <p>Siri cream x1 MX $699.00</p>
+                    <p class="summary-total">Subtotal: MX $699.00</p>
+                    <p class="summary-total">TOTAL: MX $699.00 <small>+IVA incluido</small></p>
                 </div>
-            </div>
-            <div class="col-4">
-                <div class="step-item">
-                    <span>3</span>
-                    <p>Pago</p>
+                <button class="btn-continue">CONTINUAR</button>
+
+                <!-- Card below the existing card -->
+                <div class="card-below">
+                    <p>Additional information goes here.</p>
                 </div>
             </div>
         </div>
 
-        <div id="step-content" class="row mt-4">
-            <!-- Contenido dinámico para el Método de Envío -->
-        </div>
-    </div>
+        <footer class="footer">
+            <div class="container text-center">
+                <span>JOIN OUR COMMUNITY</span>
+                <div>By subscribing you agree to our Privacy Policy, and Terms and Conditions.</div>
+                <form class="form-inline justify-content-center">
+                    <input type="email" class="form-control" placeholder="Your email">
+                    <button type="submit" class="btn btn-secondary">Subscribe</button>
+                </form>
+                <div class="row mt-4">
+                    <div class="col">
+                        <div>COLLECTIONS</div>
+                        <div>Zero</div>
+                        <div>Loewe</div>
+                    </div>
+                    <div class="col">
+                        <div>ABOUT</div>
+                        <div>Materials</div>
+                        <div>Sustainability</div>
+                    </div>
+                    <div class="col">
+                        <div>CONTACT US</div>
+                        <div>Avenida Universidad 602, Lomas del Campestre, 37150 León, Gto.</div>
+                        <div>+52 477 192 3212</div>
+                    </div>
+                    <div class="col">
+                        <div>FOLLOW US</div>
+                        <!-- Social media icons here -->
+                    </div>
+                </div>
+            </div>
+        </footer>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-    <script>
-        document.addEventListener("DOMContentLoaded", function () {
-            const stepContent = document.getElementById("step-content");
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+        <script>
+            document.addEventListener("DOMContentLoaded", function () {
+                const stepContent = document.getElementById("step-content");
 
-            // Función para actualizar el contenido según el paso
-            function updateContent(step) {
-                switch (step) {
-                    case 1:
-                        stepContent.innerHTML = `
-                            <div class="col-6">
+                // Función para actualizar el contenido según el paso
+                function updateContent(step) {
+                    switch (step) {
+                        case 1:
+                            stepContent.innerHTML = `
+                            <div class="col-12">
                                 <input type="radio" name="shippingMethod" value="standard"> Standard
                                 <p>Entrega en 3-5 días hábiles</p>
                             </div>
-                            <div class="col-6">
+                            <div class="divider"></div> <!-- Línea divisoria -->
+                            <div class="col-12">
                                 <input type="radio" name="shippingMethod" value="express"> Express
                                 <p>Entrega en 1-2 días hábiles</p>
                             </div>
+                            <div class="divider"></div> <!-- Línea divisoria -->
                             <div class="col-12 mt-3">
                                 <input type="radio" name="shippingMethod" value="pickup"> Punto de recogida
                                 <p>Recoge tu pedido en nuestro punto de recogida</p>
                             </div>
+                            <div class="divider"></div> <!-- Línea divisoria -->
                             <div class="col-12 mt-3">
                                 <button class="btn btn-primary" onclick="nextStep()">Siguiente</button>
                             </div>
                         `;
-                        break;
-                    // Agrega casos para los siguientes pasos aquí
+                            break;
+                        // Agrega casos para los siguientes pasos aquí
 
-                    default:
-                        break;
+                        default:
+                            break;
+                    }
                 }
-            }
 
-            // Función para pasar al siguiente paso
-            function nextStep() {
-                // Aquí puedes agregar lógica adicional antes de pasar al siguiente paso
-                updateContent(2); // Cambia al siguiente paso (Direcciones)
-            }
+                // Función para pasar al siguiente paso
+                function nextStep() {
+                    // Aquí puedes agregar lógica adicional antes de pasar al siguiente paso
+                    updateContent(2); // Cambia al siguiente paso (Direcciones)
+                }
 
-            // Inicializa el contenido para el primer paso
-            updateContent(1);
-        });
-    </script>
+                // Inicializa el contenido para el primer paso
+                updateContent(1);
+            });
+        </script>
 </body>
 {% endblock %}

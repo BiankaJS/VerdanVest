@@ -9,7 +9,7 @@
     <div style="flex: 3; padding: 10px; ">
         <h2><strong>Hi {{user.first_name}}</strong></h2>
         <p><a href="{% url 'auth:profile' %}" onclick="cambiarContenido('personal')">Personal Information</a></p>
-        <p> <a href="#" onclick="cambiarContenido('shopping')">My shopping</a></p>
+        <p><a href="#" onclick="cambiarContenido('shopping')">My shopping</a></p>
         <p><a href="{% url 'auth:logout' %}"><strong>Logout</strong></a></p>
     </div>
     <div style="flex: 7; padding: 10px; position: relative;">
@@ -41,44 +41,40 @@
             <p style="font-weight: bold; margin-bottom: 5px; margin-right: 10px; font-size: large;">My address</p>
             <form action="{% url 'auth:address'%}" method="post">
                 {% csrf_token %}
-                
+
                 <div style="display: flex; align-items: flex-end;">
                     <input type="text" name="address" placeholder="Change"
                         style="border: none; border-bottom: 1px solid #ccc; background: none; padding: 5px; outline: none; margin-left: auto; width: 50%;">
-            
+
                     <div style="margin-left: 10px; cursor: pointer;">
                         <img src="{% static 'img/editar.png' %}" alt="Editar" style="width: 20px; height: 20px;">
                     </div>
-            
+
                     <button type="submit" style="border: none; background: none; cursor: pointer;">
                         Submit
                     </button>
                 </div>
             </form>
-            
-            <!-- <div style="display: flex; align-items: flex-end;">
-                <input type="password" placeholder="Add"
-                    style="border: none; border-bottom: 1px solid #ccc; background: none; padding: 5px; outline: none; margin-left: auto;">
-                <div style="margin-left: 10px; cursor: pointer;">
-                    <img src="{% static 'img/editar.png' %}" alt="Editar" style="width: 20px; height: 20px;">
-                </div>
-            </div> -->
             <p style="font-weight: bold; margin-bottom: 5px; margin-right: 10px; font-size:medium;;">Add new address
             </p>
             <h6 style="margin-top: 10px; margin-bottom: 10px;">{{user.domicilio}}</h6>
             <div class="line" style="width: 100%; border: 1px solid #ccc;"></div>
         </div>
         <div id="shoppingContent" style="border: 1px solid #ccc; padding: 10px; margin-bottom: 20px;">
-
             <p style="font-weight: bold;">Delivered</p>
-            {% if pedido %}
+            {% if detalles_pedidos %}
+            {% for p in detalles_pedidos %}
             <div style="display: flex; justify-content: flex-end; margin-bottom: 10px;">
-                {% for pedido in pedidos%}
-                <img src="{pedido.producto.urlImagen}" alt="Imagen 3" style="width: 200px; height: 200px;">
+                {% for detalle in p.detalles %}
+                <img src="{{detalle.producto.urlImagen}}" style="width: 200px; height: 200px;">
                 {% endfor %}
             </div>
-            <p style="color: #888;">You received: {{pedido.fecha_entrega_estimada}}</p>
-            <p style="font-weight: bold;">Amount: USD 1000</p>
+            {% for detalle in p.detalles %}
+                <p>{{detalle.producto.nombre}}: {{detalle.cantidad}}</p>
+            {% endfor %}
+            <p style="color: #888;">You received: {{p.pedido.fecha_entrega_estimada}}</p>
+            <p style="font-weight: bold;">Amount: USD {{p.pedido.total}}</p>
+            {% endfor %}
             {% endif %}
         </div>
     </div>
@@ -86,19 +82,16 @@
 {% endif %}
 <script>
     document.addEventListener('DOMContentLoaded', function () {
-        // Llamamos a cambiarContenido con 'personal' como argumento al cargar la página
         cambiarContenido('personal');
     });
 
     function cambiarContenido(seccion) {
-        // Oculta todos los contenidos
         document.getElementById('accountContent').style.display = 'none';
         document.getElementById('emailContent').style.display = 'none';
         document.getElementById('personalContent').style.display = 'none';
         document.getElementById('addressContent').style.display = 'none';
         document.getElementById('shoppingContent').style.display = 'none';
 
-        // Muestra el contenido según la sección seleccionada
         if (seccion === 'personal') {
             document.getElementById('accountContent').style.display = 'block';
             document.getElementById('emailContent').style.display = 'block';
@@ -213,7 +206,6 @@
         padding: 20px 0;
         width: 100%;
         text-align: center;
-        position: absolute;
         bottom: 0;
     }
 

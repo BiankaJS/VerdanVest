@@ -47,12 +47,15 @@ def register_view(request):
 def profile_view(request):
     try:
         user = request.user
-        pedido = Pedido.objects.get(usuario_id=request.user.id)
-        pedidos = PedidoDetalle.objects.get(pedidoId=pedido.id)
+        pedido = Pedido.objects.filter(usuario_id=request.user.id)
+        detalles_pedidos = []
+        for p in pedido:
+            detalles_pedido = PedidoDetalle.objects.filter(pedidoId_id=p.id)
+            detalles_pedidos.append({'pedido': p, 'detalles': detalles_pedido})
         context = {
             'pedido': pedido,
-            'pedidos': pedidos,
-            'user': user
+            'detalles_pedidos': detalles_pedidos,
+            'user': user,
         }
         return render(request, 'usuario/profile.html', context)
     except: 
@@ -60,7 +63,7 @@ def profile_view(request):
 
 def logout_view(request):
     logout(request)
-    return redirect('home:Home')
+    return redirect('auth:login')
 
 @login_required
 def addAddress_view(request):

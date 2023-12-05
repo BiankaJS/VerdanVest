@@ -8,7 +8,37 @@
   <div class="common-concerns">
     <div class="ingredient-images">
       <img src="{% static 'img/biotin.png' %}" alt="Biotin" class="ingredient-image-l">
-      <img src="{% static 'img/low.png' %}" alt="Low" class="ingredient-image-l">
+      {% if toxicidad == 1 %}
+      <img src="{% static 'img/uno.png' %}"  class="ingredient-image-l">
+      {% endif%}
+      {% if toxicidad == 2 %}
+      <img src="{% static 'img/dos.png' %}"  class="ingredient-image-l">
+      {% endif%}
+      {% if toxicidad == 3 %}
+      <img src="{% static 'img/tres.png' %}"  class="ingredient-image-l">
+      {% endif%}
+      {% if toxicidad == 4 %}
+      <img src="{% static 'img/uno.png' %}"  class="ingredient-image-l">
+      {% endif%}
+      {% if toxicidad == 5 %}
+      <img src="{% static 'img/uno.png' %}"  class="ingredient-image-l">
+      {% endif%}
+      {% if toxicidad == 6 %}
+      <img src="{% static 'img/uno.png' %}"  class="ingredient-image-l">
+      {% endif%}
+      {% if toxicidad == 7 %}
+      <img src="{% static 'img/uno.png' %}"  class="ingredient-image-l">
+      {% endif%}
+      {% if toxicidad == 8 %}
+      <img src="{% static 'img/uno.png' %}"  class="ingredient-image-l">
+      {% endif%}
+      {% if toxicidad == 9 %}
+      <img src="{% static 'img/uno.png' %}"  class="ingredient-image-l">
+      {% endif%}
+      {% if toxicidad == 10 %}
+      <img src="{% static 'img/uno.png' %}"  class="ingredient-image-l">
+      {% endif%}
+      <h1 style="font-weight: bold;">{{ingrediente.nombre}}</h1>
     </div>
     <div class="concern-title">Common Concerns</div>
     <div class="concern-list">
@@ -29,28 +59,54 @@
     <div class="concern-list">
       <div class="concern-item">Low</div>
       <div class="concern-item">Use Restrictions</div>
-    </div>
-    <!-- Add more concerns as needed -->
+    </div> 
   </div>
 
   <div class="ingredient-info">
-    <img src="{% static 'img/quimico.png' %}" alt="Ingredient" class="ingredient-image">
+    <img src="{{ingrediente.urlImagen}}" alt="Ingredient" class="ingredient-image">
     <button class="find-products-button">Find products with this ingredient</button>
     <div class="priorities">
       <h3><strong> Priorities</strong></h3>
-      <p>Biotin, also known as vitamin B7, is a water-soluble vitamin that plays a crucial role in maintaining healthy
-        hair, skin, and nails. It is often referred to as the 'beauty vitamin' due to its ability to enhance the
-        overall appearance of these features.</p>
+      <p>{{ingrediente.propiedades_dermatologicas}}</p>
     </div>
   </div>
 </div>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 <script>
-  function toggleMaterial(material) {
-    const details = document.getElementById(`${material}-details`);
-    details.style.display = details.style.display === 'none' ? 'block' : 'none';
-  }
+  document.addEventListener("DOMContentLoaded", function () {
+        // Supongamos que concernsText es una variable que cambia dinámicamente
+        var concernsText = 'r, o , s, c , a' ; // Debes implementar esta función
+
+        var concernsArray = concernsText.split(',').map(function (concern) {
+            return concern.trim();
+        });
+
+        var concernsContainer = document.getElementById('concerns-container');
+        concernsContainer.innerHTML = '';
+
+        var concernList = document.createElement('div');
+        concernList.className = 'concern-list';
+
+        concernsArray.forEach(function (concern) {
+            var concernItem = document.createElement('div');
+            concernItem.className = 'concern-item';
+            concernItem.textContent = concern;
+
+            var intensity = document.createElement('div');
+            intensity.className = 'concern-item';
+            intensity.textContent = 'LOW';
+
+            var line = document.createElement('div');
+            line.className = 'line'
+
+            concernList.appendChild(intensity);
+            concernList.appendChild(concernItem);
+            concernList.appendChild(line);
+        });
+
+        concernsContainer.appendChild(concernList);
+    });
 </script>
 <style>
   body {

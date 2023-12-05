@@ -49,15 +49,20 @@
 
     <p class="free-shipping">FREE RETURNS</p>
     <p class="shipping-details">20-day return guarantee</p>
+    <a href="{% url 'shopping:shipment' %}">
+      <div class="text-center" id="comprar" style="margin-bottom: 20px;">
+        <button style="background-color:  #829765; width: 500px;" type="submit" class="btn btn-primary btn-lg">Payment process</button>
+      </div>
+    </a>
   </div>
-  <a href="{% url 'shopping:shipment' %}">
-    <div class="text-center" id="comprar" style="margin-bottom: 20px;">
-      <button style="background-color:  #829765; width: 500px;" type="submit" class="btn btn-primary btn-lg">Payment process</button>
-    </div>
-  </a>
   {% else %}
   <p class="subtotal" style="color: #888;">Subtotal: $00.00</p>
   <h4 style="text-align: center;">Have 0 item(s) in your shopping cart</h4>
+  <a href="{% url 'catalog:Catalog' %}" style="margin-top: 20px;">
+    <div class="text-center" id="comprar" style="margin-bottom: 20px;">
+      <button style="background-color:  #829765; width: 500px;" type="submit" class="btn btn-primary btn-lg">Continue with the purchase</button>
+    </div>
+  </a>
   {% endif %}
 </div>
 
@@ -188,7 +193,7 @@
     border: 1px solid #000;
     padding: 20px;
     border-radius: 10px;
-    height: 400px;
+    height: 430px;
     align-content: center;
   }
 

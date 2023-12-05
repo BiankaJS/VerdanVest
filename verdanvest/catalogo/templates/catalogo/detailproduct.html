@@ -19,7 +19,7 @@
         </div>
         <button type="submit" class="btn btn-submit">ADD TO CAR</button>
       </form>
-      <div class="title">¡CONSIGUE UNA PIEL RADIANTE!</div>
+      <div class="title">UNVEIL BEAUTY IN EVERY DETAIL!</div>
       <p class="description">
         {{product.descripcion}}
       </p>
@@ -29,7 +29,7 @@
       <div class="materials">
         <div class="material-item">
           <p>{{i.ingrediente.nombre}}</p>
-          <a href="#" style="text-decoration: none; color: black;"><strong>+</strong></a>
+          <a href="{% url 'detail:detailingrediente' i.ingrediente.id %}" style="text-decoration: none; color: black;"><strong>+</strong></a>
         </div>
         <div class="material-details" id="{i.ingrediente.nombre}-details">
           {{i.ingrediente.funcion}}
@@ -211,6 +211,7 @@
   }
 
   .title {
+    margin-top: 20px;
     font-size: 24px;
     font-weight: bold;
     text-align: center;

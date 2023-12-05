@@ -60,4 +60,4 @@ def savePayCart_view(request):
                 pedidoDetalle.save()
 
             cart.delete()
-            return redirect('auth:login')
+            return redirect('auth:profile')

@@ -2,14 +2,17 @@ from django.shortcuts import render, get_object_or_404, redirect
 from catalogo.models import Producto, Categoria, Marca, ProductoIngrediente
 from ingredientes_materiales.models import Material, Ingrediente
 from compras.models import CarritoCompraDetalle, CarritoCompra
+from django.contrib.auth.decorators import login_required
 
 def productDetail(request, productId):
     try:
         product = get_object_or_404(Producto, pk=productId)
         ingredients = ProductoIngrediente.objects.filter(producto_id=productId)
+        recomend = Producto.objects.exclude(pk=productId)[:4]
         context = {
           'product': product,
-          'ingredients': ingredients
+          'ingredients': ingredients,
+          'recomend': recomend
         }
         return render(request, "catalogo/detailproduct.html", context)
     except Producto.DoesNotExist:
@@ -41,7 +44,7 @@ def catalog(request, categoryId=None):
       'ingredients': ingredients
     }
 
-    return render(request, 'catalog.html', context)
+    return render(request, 'catalogo/catalog.html', context)
   except: 
     products = Producto.objects.all()
     categories = Categoria.objects.all() if Categoria is not None else []
@@ -59,9 +62,10 @@ def catalog(request, categoryId=None):
     return render(request, 'catalogo/catalog.html', context)
 
 def addProductCart(request, productId):
-  if(request.user):
+  if(request.user.id):
     try: 
-      cart = CarritoCompra.objects.get(usuario_id=request.user.id)
+      user = request.user
+      cart = CarritoCompra.objects.get(usuario_id=user.id)
     except: 
       cart = CarritoCompra.objects.create(usuario=request.user, subtotal=0, total=0)
     if(request.method == "POST"):

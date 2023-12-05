@@ -43,42 +43,19 @@
   <div class="recommended-products">
     <h3 class="my-4">Highly recommended!</h3>
     <div class="row">
+      {% if recomend %}
+      {% for rec in recomend%}
       <div class="col-md-3">
         <div class="card h-100">
-          <img src="{% static 'img/donspack.webp' %}" class="card-img-top" alt="...">
+          <img src="{{rec.urlImagen}}" class="card-img-top" alt="...">
           <div class="card-body">
-            <p class="card-text">Dons Pack</p>
-            <p class="card-text">$55.00 USD</p>
+            <p class="card-text">{{rec.nombre}}</p>
+            <p class="card-text">${{rec.precio}} USD</p>
           </div>
         </div>
       </div>
-      <div class="col-md-3">
-        <div class="card h-100">
-          <img src="{% static 'img/flixpack.webp' %}" class="card-img-top" alt="...">
-          <div class="card-body">
-            <p class="card-text">Flix pack</p>
-            <p class="card-text">$45.00 USD</p>
-          </div>
-        </div>
-      </div>
-      <div class="col-md-3">
-        <div class="card h-100">
-          <img src="{% static 'img/toothbrush.jpg' %}" class="card-img-top" alt="...">
-          <div class="card-body">
-            <p class="card-text">Tootbrush</p>
-            <p class="card-text">$24.00 USD</p>
-          </div>
-        </div>
-      </div>
-      <div class="col-md-3">
-        <div class="card h-100">
-          <img src="{% static 'img/dentalfloss.webp' %}" class="card-img-top" alt="...">
-          <div class="card-body">
-            <p class="card-text">Dental Floss</p>
-            <p class="card-text">$05.00 USD</p>
-          </div>
-        </div>
-      </div>
+      {% endfor%}
+      {% endif%}
       <!-- Repeat for other products -->
     </div>
   </div>

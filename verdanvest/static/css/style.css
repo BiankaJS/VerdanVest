@@ -89,7 +89,6 @@ a.nav-link:hover {
 
 .cart-icon img {
   height: 100%;
-  /* Ajusta la altura según tus necesidades */
 }
 
 .register-container {
@@ -132,3 +131,17 @@ a.nav-link:hover {
   height: 100%;
   display: inline-block;
 }
+
+.social-icons {
+  display: flex;
+  justify-content: center; 
+  align-items: center;
+  margin-top: 10px;
+}
+
+.social-icons img {
+  width: 10px; 
+  height: auto;
+  margin-right: 10px;
+}
+

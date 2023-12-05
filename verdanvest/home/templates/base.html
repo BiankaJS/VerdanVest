@@ -9,6 +9,9 @@
     {% block style %}
     <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
     {% endblock %}
+
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+
 </head>
 
 <body>
@@ -41,39 +44,74 @@
             {% endif %}
         </div>
     </nav>
+
     <main>
         {% block content %}{% endblock %}
     </main>
+
+    <div id="alertPlaceholder"></div>
+
+    <script>
+        $(document).ready(function () {
+            // Habilitar el botón de suscripción solo si hay texto en el input
+            $('#email-input').on('input', function() {
+                var email = $(this).val();
+                if (email.trim() === '') {
+                    $('#subscribe-button').prop('disabled', true);
+                } else {
+                    $('#subscribe-button').prop('disabled', false);
+                }
+            });
+    
+            // Manejar el evento de clic del botón de suscripción
+            $('#subscription-form').submit(function (event) {
+                var email = $('#email-input').val();
+                if (email.trim() !== '') {
+                    alert('Correo registrado con éxito');
+                    $('#email-input').val(''); 
+                }
+                event.preventDefault(); 
+            });
+        });
+    </script>
+    
+    
     <footer class="footer">
         <div class="container text-center">
             <span>JOIN OUR COMMUNITY</span>
             <div>By subscribing you agree to our Privacy Policy, and Terms and Conditions.</div>
-            <form class="form-inline justify-content-center">
-                <input type="email" class="form-control" placeholder="Your email">
-                <button type="submit" class="btn btn-secondary">Subscribe</button>
+            <form class="form-inline justify-content-center" id="subscription-form">
+                <input type="email" class="form-control" id="email-input" placeholder="Your email" required>
+                <button type="submit" class="btn btn-secondary" id="subscribe-button" disabled>Subscribe</button>
             </form>
             <div class="row mt-4">
                 <div class="col">
-                    <div>COLLECTIONS</div>
-                    <div>Zero</div>
-                    <div>Loewe</div>
+                    <a class="nav-link" href="{% url 'detail:detailmaterial' %}" style="color: white;">MATERIALS</a>
                 </div>
+                
                 <div class="col">
-                    <div>ABOUT</div>
-                    <div>Materials</div>
-                    <div>Sustainability</div>
-                </div>
-                <div class="col">
-                    <div>CONTACT US</div>
+                    <a class="nav-link" href="{% url 'support:home' %}" style="color: white;" >CONTACT US</a>
                     <div>Avenida Universidad 602, Lomas del Campestre, 37150 León, Gto.</div>
                     <div>+52 477 192 3212</div>
                 </div>
                 <div class="col">
-                    <div>FOLLOW US</div>
+                    <div style="margin-top: 10px;">FOLLOW US</div>
+                    <div style="display: flex; justify-content: center;">
+                        <a href="https://www.facebook.com" target="_blank" rel="noopener noreferrer">
+                            <img class="social-icons" src="{% static 'img/facebook.png' %}" alt="Facebook" style="width: 30px; margin-right: 10px;">
+                        </a>
+                        <a href="https://twitter.com" target="_blank" rel="noopener noreferrer">
+                            <img class="social-icons" src="{% static 'img/gorjeo.png' %}" alt="Twitter" style="width: 30px; margin-right: 10px;">
+                        </a>
+                        <a href="https://www.instagram.com" target="_blank" rel="noopener noreferrer">
+                            <img class="social-icons" src="{% static 'img/instagram.png' %}" alt="Instagram" style="width: 30px;">
+                        </a>
+                    </div>
                 </div>
             </div>
         </div>
     </footer>
+    
 </body>
 
 </html>

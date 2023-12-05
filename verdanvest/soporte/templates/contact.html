@@ -20,38 +20,38 @@
 <div class="container-mar">
   <div class="form-column">
     <form method="post" action="{% url 'support:home' %}">
-        {% csrf_token %}
-        <div class="contact-form">
-            <div class="form-group">
-                <label for="name">Name:</label>
-                <input type="text" id="name" name="name" required>
-            </div>
-            <div class="form-group">
-                <label for="email">Email:</label>
-                <input type="email" id="email" name="email" required>
-            </div>
-            <div class="form-group">
-                <label for="phone">Phone Number:</label>
-                <input type="tel" id="phone" name="phone" required>
-            </div>
-            <div class="form-group">
-                <label for="message">Message:</label>
-                <textarea id="message" name="message" required></textarea>
-            </div>
-            <div class="form-group">
-                <button type="submit">Send</button>
-            </div>
+      {% csrf_token %}
+      <div class="contact-form">
+        <div class="form-group">
+          <label for="name">Name:</label>
+          <input type="text" id="name" name="name" required>
         </div>
+        <div class="form-group">
+          <label for="email">Email:</label>
+          <input type="email" id="email" name="email" required>
+        </div>
+        <div class="form-group">
+          <label for="phone">Phone Number:</label>
+          <input type="tel" id="phone" name="phone" required>
+        </div>
+        <div class="form-group">
+          <label for="message">Message:</label>
+          <textarea id="message" name="message" required></textarea>
+        </div>
+        <div class="form-group">
+          <button type="submit">Send</button>
+        </div>
+      </div>
     </form>
   </div>
 </div>
-  <div class="store-info-column" style="border: 1px solid #000; border-radius: 10px; margin: 5% 5%;">
-    <h1><strong>01</strong></h1>
-    <h3><strong>STORE MEXICO CITY</strong></h3>
-    <p>Avenida Universidad 602, Lomas del Campestre, 37150 León, Gto.</p>
-    <p><strong>Phone:</strong> +52 123 456 7890</p>
-    <p><strong>Email:</strong> info@storemexicocity.com</p>
-  </div>
+<div class="store-info-column" style="border: 1px solid #000; border-radius: 10px; margin: 5% 5%;">
+  <h1><strong>01</strong></h1>
+  <h3><strong>STORE MEXICO CITY</strong></h3>
+  <p>Avenida Universidad 602, Lomas del Campestre, 37150 León, Gto.</p>
+  <p><strong>Phone:</strong> +52 123 456 7890</p>
+  <p><strong>Email:</strong> info@storemexicocity.com</p>
+</div>
 </div>
 <div id="mapa">
 

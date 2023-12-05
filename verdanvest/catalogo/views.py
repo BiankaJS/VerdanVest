@@ -6,9 +6,10 @@ from compras.models import CarritoCompraDetalle, CarritoCompra
 def productDetail(request, productId):
     try:
         product = get_object_or_404(Producto, pk=productId)
-        ingredientes = ProductoIngrediente.objects.filter(producto_id=productId)
+        ingredients = ProductoIngrediente.objects.filter(producto_id=productId)
         context = {
-          'product': product
+          'product': product,
+          'ingredients': ingredients
         }
         return render(request, "catalogo/detailproduct.html", context)
     except Producto.DoesNotExist:

@@ -1,7 +1,6 @@
 {% extends 'base.html' %}
 {% load static %}
 {% block content %}
-
 <style>
     body {
         background-color: #f4f4f4;
@@ -216,7 +215,6 @@
         background-color: #5a6268;
     }
 </style>
-
 <div class="container my-5">
     <div class="row mb-4">
         <!-- Stepper -->
@@ -237,42 +235,10 @@
             </div>
         </div>
     </div>
-
-    <!-- Contenedor para el contenido del paso -->
     <div id="step-content" class="row">
-        <!-- Contenido del paso se actualizará aquí -->
     </div>
-
     <div id="address-form-container"></div>
-
     <script>
-
-        function openAddressForm() {
-            const addressFormContainer = document.getElementById("address-form-container");
-            addressFormContainer.innerHTML = `
-                <div class="grid-form">
-                    <h4>New Address</h4>
-                    <input type="text" placeholder="Enter your address" id="new-address-input">
-                    <button onclick="saveAddress()">Save Address</button>
-                </div>
-            `;
-        }
-
-        function saveAddress() {
-            const newAddressInput = document.getElementById("new-address-input");
-            const newAddress = newAddressInput.value;
-
-            // Bianka, aqui va la parte de guardarla en la base de datos
-
-            closeAddressForm();
-        }
-
-        function closeAddressForm() {
-            const addressFormContainer = document.getElementById("address-form-container");
-            addressFormContainer.innerHTML = ""; // Clear the content
-        }
-
-
         let currentStep = 1;
         const radioSelections = {};
 
@@ -331,20 +297,24 @@
                             <!-- Order Summary -->
             <div class="col-md-5">
                 <div class="card">
-                    <div class="card-details d-flex"> <!-- Added 'd-flex' to use flexbox -->
-                        <img src="{% static 'img/masajeante.png' %}" alt="Product Image" class="card-image">
+                    {% if detail_cart %}
+                    {% for p in detail_cart%}
+                    <div class="card-details d-flex">
+                        <img src="{{p.producto.urlImagen}}" alt="Product Image" class="card-image">
                         <div>
-                            <h4>ANTI-CELLULITE MASSAGER</h4>
-                            <p>Quantity: 1</p>
-                            <p>Price: USD $699.00</p>
+                            <h4>{{p.producto.nombre}}</h4>
+                            <p>Quantity: {{p.cantidad}}</p>
+                            <p>Price: USD $ {{p.producto.precio}}</p>
                         </div>
                     </div>
+                    {% endfor %}
+                    {% endif%}
                 </div>
 
                 <div class="summary-item">
                     <h4>Additional Information</h4>
-                    <p class="summary-total">Subtotal: USD $699.00</p>
-                    <p class="summary-total">TOTAL: USD $699.00 <small>+VAT included</small></p>
+                    <p class="summary-total">Subtotal: USD $ {{total_cart}}</p>
+                    <p class="summary-total">TOTAL: USD $ {{total_cart}} <small>+VAT included</small></p>
                 </div>
                 <button class="btn-continue" onclick="nextStep()">${step === 3 ? 'PAY' : 'CONTINUE'}</button>
             </div>
@@ -355,44 +325,38 @@
                     <div class="row" id="step-2">
                             <!-- Addresses -->
                             <div class="col-md-7">
-                                <div class="col-12 address-option">
-                                    <input type="radio" name="address" id="address1" ${radioSelections[2] === 'address1' ? 'checked' : ''}>
-                                    <label for="address1">Address 1</label>
-                                    <p>Address 1 details</p>
-                                </div>
-                                <div class="divider"></div> <!-- Divider line -->
+                                {% if domicilio %}
                                 <div class="col-12 address-option">
                                     <input type="radio" name="address" id="address2" ${radioSelections[2] === 'address2' ? 'checked' : ''}>
-                                    <label for="address2">Address 2</label>
-                                    <p>Address 2 details</p>
+                                    <label for="address2">Address</label>
+                                    <p>{{domicilio}}</p>
                                 </div>
+                                {% endif %}
                                 <div class="divider"></div> <!-- Divider line -->
-                                <div class="col-12 address-option">
-                                    <input type="radio" name="address" id="address3" ${radioSelections[2] === 'address3' ? 'checked' : ''}>
-                                    <label for="address3">Address 3</label>
-                                    <p>Address 3 details</p>
-                                </div>
-                                <div class="divider"></div> <!-- Divider line -->
-                                <button class="btn-addAddress" onclick="openAddressForm()">Add Address</button>
+                                <a href="{% url 'auth:profile' %}"><button class="btn-addAddress">Add Address</button></a>
                             </div>
 
-                                <!-- Order Summary -->
             <div class="col-md-5">
                 <div class="card">
-                    <div class="card-details d-flex"> <!-- Added 'd-flex' to use flexbox -->
-                        <img src="{% static 'img/masajeante.png' %}" alt="Product Image" class="card-image">
+                    <div class="card">
+                    {% if detail_cart %}
+                    {% for p in detail_cart%}
+                    <div class="card-details d-flex">
+                        <img src="{{p.producto.urlImagen}}" alt="Product Image" class="card-image">
                         <div>
-                            <h4>ANTI-CELLULITE MASSAGER</h4>
-                            <p>Quantity: 1</p>
-                            <p>Price: USD $699.00</p>
+                            <h4>{{p.producto.nombre}}</h4>
+                            <p>Quantity: {{p.cantidad}}</p>
+                            <p>Price: USD $ {{p.producto.precio}}</p>
                         </div>
                     </div>
+                    {% endfor %}
+                    {% endif%}
                 </div>
 
                 <div class="summary-item">
                     <h4>Additional Information</h4>
-                    <p class="summary-total">Subtotal: USD $699.00</p>
-                    <p class="summary-total">TOTAL: USD $699.00 <small>+VAT included</small></p>
+                    <p class="summary-total">Subtotal: USD $ {{total_cart}}</p>
+                    <p class="summary-total">TOTAL: USD $ {{total_cart}} <small>+VAT included</small></p>
                 </div>
                 <button class="btn-continue" onclick="nextStep()">${step === 3 ? 'PAY' : 'CONTINUE'}</button>
             </div>
@@ -438,22 +402,29 @@
                             <!-- Order Summary -->
             <div class="col-md-5">
                 <div class="card">
-                    <div class="card-details d-flex"> <!-- Added 'd-flex' to use flexbox -->
-                        <img src="{% static 'img/masajeante.png' %}" alt="Product Image" class="card-image">
+                    <div class="card">
+                    {% if detail_cart %}
+                    {% for p in detail_cart%}
+                    <div class="card-details d-flex">
+                        <img src="{{p.producto.urlImagen}}" alt="Product Image" class="card-image">
                         <div>
-                            <h4>ANTI-CELLULITE MASSAGER</h4>
-                            <p>Quantity: 1</p>
-                            <p>Price: USD $699.00</p>
+                            <h4>{{p.producto.nombre}}</h4>
+                            <p>Quantity: {{p.cantidad}}</p>
+                            <p>Price: USD $ {{p.producto.precio}}</p>
                         </div>
                     </div>
+                    {% endfor %}
+                    {% endif%}
                 </div>
-
                 <div class="summary-item">
                     <h4>Additional Information</h4>
-                    <p class="summary-total">Subtotal: USD $699.00</p>
-                    <p class="summary-total">TOTAL: USD $699.00 <small>+VAT included</small></p>
+                    <p class="summary-total">Subtotal: USD $ {{total_cart}}</p>
+                    <p class="summary-total">TOTAL: USD $ {{total_cart}} <small>+VAT included</small></p>
                 </div>
-                <button class="btn-continue" onclick="nextStep()">${step === 3 ? 'PAY' : 'CONTINUE'}</button>
+                <form method="post" action="{% url 'shopping:pay' %}">
+                    {% csrf_token %}
+                    <button class="btn-continue" >PAY</button>
+                </form>
             </div>
                                                         `;
                     break;

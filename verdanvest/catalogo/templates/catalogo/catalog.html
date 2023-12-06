@@ -8,9 +8,9 @@
 <h2 class="text-center-title">{{categoria}}</h2>
 {% endif %}
 <a class="btn btn-primary float-end" data-bs-toggle="offcanvas" href="#offcanvasExample" role="button"
-    aria-controls="offcanvasExample" style="background-color: #829778;" style="margin-left: 50px; ">
+    aria-controls="offcanvasExample" style="background-color: #829778; margin-left: 50px; width: 200px; margin-top: 10px; margin-right: 25px;">
     Search
-    <img src="{% static 'img/filter.png' %}" style="width: 6%; text-align: center;">
+    <img src="{% static 'img/filter.png' %}" style="width: 10%; text-align: center;">
 </a>
 <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
     <div class="offcanvas-header">
@@ -38,20 +38,20 @@
             <ul class="dropdown-menu">
                 {% if brandies %}
                 {% for brand in brandies %}
-                <li><a class="dropdown-item" href="#">{{brand.nombre}}</a></li>
+                <li><a class="dropdown-item" href="{% url 'catalog:Catalog_brand' brand.id %}">{{brand.nombre}}</a></li>
                 {% endfor%}
                 {% endif%}
             </ul>
         </div>
 
-        <div class="dropdown mt-3">
+        <!-- <div class="dropdown mt-3">
             <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown">
                 Ingredient
             </button>
             <ul class="dropdown-menu">
                 {% if ingredients %}
                 {% for ingredient in ingredients %}
-                <li><a class="dropdown-item" href="#">{{ingredient.nombre}}</a></li>
+                <li><a class="dropdown-item" href="{% url 'catalog:Catalog_ingredient' ingredient.id %}">{{ingredient.nombre}}</a></li>
                 {% endfor%}
                 {% endif%}
             </ul>
@@ -63,11 +63,11 @@
             <ul class="dropdown-menu">
                 {% if materials %}
                 {% for material in materials %}
-                <li><a class="dropdown-item" href="#">{{material.nombre}}</a></li>
+                <li><a class="dropdown-item" href="{% url 'catalog:Catalog_material' material.id %}">{{material.nombre}}</a></li>
                 {% endfor %}
                 {% endif %}
             </ul>
-        </div>
+        </div> -->
     </div>
 </div>
 

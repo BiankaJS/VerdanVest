@@ -1,5 +1,5 @@
 from django.shortcuts import render, get_object_or_404, redirect
-from catalogo.models import Producto, Categoria, Marca, ProductoIngrediente
+from catalogo.models import Producto, Categoria, Marca, ProductoIngrediente, ProductoMaterial
 from ingredientes_materiales.models import Material, Ingrediente
 from compras.models import CarritoCompraDetalle, CarritoCompra
 from django.contrib.auth.decorators import login_required
@@ -21,14 +21,30 @@ def productDetail(request, productId):
         print(f"An error occurred: {e}")
         return redirect("catalogo/catalog.html", {"error_message": "Ocurred an error"})
 
-def catalog(request, categoryId=None):
-  try: 
-    if categoryId is not None:
-      products = Producto.objects.filter(categoria__id=categoryId)
-      categoria = Categoria.objects.get(pk=categoryId)
+def catalog(request):
+  products = Producto.objects.all()
+  categories = Categoria.objects.all() if Categoria is not None else []
+  brandies = Marca.objects.all() if Marca is not None else []
+  materials = Material.objects.all() if Material is not None else []
+  ingredients = Ingrediente.objects.all() if Ingrediente is not None else []
 
-    else:
-      products = Producto.objects.all()
+  context = {
+    'products': products,
+    'categories': categories,
+    'brandies': brandies,
+    'materials': materials,
+    'ingredients': ingredients
+  }
+
+  return render(request, 'catalogo/catalog.html', context)
+
+def catalog_category(request, categoryId):
+  try: 
+    dto = Producto.objects.all()
+    print(dto)
+    products = dto.filter(categoria_id=categoryId)
+    print(products)
+    categoria = Categoria.objects.get(pk=categoryId)
 
     categories = Categoria.objects.all() if Categoria is not None else []
     brandies = Marca.objects.all() if Marca is not None else []
@@ -46,7 +62,27 @@ def catalog(request, categoryId=None):
 
     return render(request, 'catalogo/catalog.html', context)
   except: 
-    products = Producto.objects.all()
+    categories = Categoria.objects.all() if Categoria is not None else []
+    brandies = Marca.objects.all() if Marca is not None else []
+    materials = Material.objects.all() if Material is not None else []
+    ingredients = Ingrediente.objects.all() if Ingrediente is not None else []
+
+    context = {
+      'products': [],
+      'categories': categories,
+      'brandies': brandies,
+      'materials': materials,
+      'ingredients': ingredients
+    }
+    return render(request, 'catalogo/catalog.html', context)
+
+def catalog_brand(request, brandId):
+  try: 
+    dto = Producto.objects.all()
+    print(dto)
+    products = dto.filter(marca_id=brandId)
+    print(products)
+
     categories = Categoria.objects.all() if Categoria is not None else []
     brandies = Marca.objects.all() if Marca is not None else []
     materials = Material.objects.all() if Material is not None else []
@@ -54,6 +90,21 @@ def catalog(request, categoryId=None):
 
     context = {
       'products': products,
+      'categories': categories,
+      'brandies': brandies,
+      'materials': materials,
+      'ingredients': ingredients
+    }
+
+    return render(request, 'catalogo/catalog.html', context)
+  except: 
+    categories = Categoria.objects.all() if Categoria is not None else []
+    brandies = Marca.objects.all() if Marca is not None else []
+    materials = Material.objects.all() if Material is not None else []
+    ingredients = Ingrediente.objects.all() if Ingrediente is not None else []
+
+    context = {
+      'products': [],
       'categories': categories,
       'brandies': brandies,
       'materials': materials,

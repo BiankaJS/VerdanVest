@@ -23,7 +23,7 @@
             <a class="nav-link" href="{% url 'support:home' %}">ABOUT</a>
         </div>
         <div class="overlay-word search-cart-login">
-            <input class="search-bar" type="text" placeholder="Search">
+            <!-- <input class="search-bar" type="text" placeholder="Search"> -->
             {% if user.is_authenticated %}
             <a href="{% url 'shopping:cart' %}" class="cart-link">
                 <img src="{% static 'img/bolsacompra.png' %}" alt="Bolsa de Compra" class="cart-icon"></img>
